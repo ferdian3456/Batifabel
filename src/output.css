@@ -930,6 +930,18 @@ body {
   width: 20rem;
 }
 
+.w-\[15rem\]{
+  width: 15rem;
+}
+
+.w-\[16rem\]{
+  width: 16rem;
+}
+
+.w-\[16\.5rem\]{
+  width: 16.5rem;
+}
+
 .-translate-x-1\/2{
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1438,5 +1450,17 @@ body {
 
   .\32xl\:w-4\/5{
     width: 80%;
+  }
+
+  .\32xl\:w-1\/2{
+    width: 50%;
+  }
+
+  .\32xl\:w-3\/4{
+    width: 75%;
+  }
+
+  .\32xl\:w-full{
+    width: 100%;
   }
 }
