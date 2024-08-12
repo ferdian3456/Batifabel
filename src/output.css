@@ -926,6 +926,10 @@ body {
   width: 75%;
 }
 
+.w-\[20rem\]{
+  width: 20rem;
+}
+
 .-translate-x-1\/2{
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1385,6 +1389,37 @@ body {
   .lg\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:w-\[30rem\]{
+    width: 30rem;
+  }
+
+  .xl\:w-\[20rem\]{
+    width: 20rem;
+  }
+
+  .xl\:w-96{
+    width: 24rem;
+  }
+
+  .xl\:w-56{
+    width: 14rem;
+  }
+
+  .xl\:w-12{
+    width: 3rem;
+  }
+
+  .xl\:w-\[43rem\]{
+    width: 43rem;
+  }
+
+  .xl\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
