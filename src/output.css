@@ -588,9 +588,9 @@ body {
   }
 }
 
-@media (min-width: 1536px){
+@media (min-width: 1537px){
   .container{
-    max-width: 1536px;
+    max-width: 1537px;
   }
 }
 
@@ -757,14 +757,6 @@ body {
   margin-top: 75px;
 }
 
-.mb-4{
-  margin-bottom: 1rem;
-}
-
-.mb-8{
-  margin-bottom: 2rem;
-}
-
 .line-clamp-2{
   overflow: hidden;
   display: -webkit-box;
@@ -774,10 +766,6 @@ body {
 
 .block{
   display: block;
-}
-
-.inline-block{
-  display: inline-block;
 }
 
 .flex{
@@ -816,6 +804,10 @@ body {
   height: 13rem;
 }
 
+.h-6{
+  height: 1.5rem;
+}
+
 .h-auto{
   height: auto;
 }
@@ -831,14 +823,6 @@ body {
 
 .h-mayan{
   height: 36rem;
-}
-
-.h-6{
-  height: 1.5rem;
-}
-
-.h-screen{
-  height: 100vh;
 }
 
 .w-1{
@@ -877,8 +861,16 @@ body {
   width: 1.25rem;
 }
 
+.w-6{
+  width: 1.5rem;
+}
+
 .w-96{
   width: 24rem;
+}
+
+.w-\[10rem\]{
+  width: 10rem;
 }
 
 .w-\[18rem\]{
@@ -910,20 +902,20 @@ body {
   width: 100%;
 }
 
-.w-6{
-  width: 1.5rem;
-}
-
 .w-screen{
   width: 100vw;
 }
 
-.w-\[10rem\]{
-  width: 10rem;
+.w-\[15rem\]{
+  width: 15rem;
 }
 
-.flex-1{
-  flex: 1 1 0%;
+.w-\[16rem\]{
+  width: 16rem;
+}
+
+.w-\[17rem\]{
+  width: 17rem;
 }
 
 .-translate-x-1\/2{
@@ -981,10 +973,6 @@ body {
 
 .gap-12{
   gap: 3rem;
-}
-
-.gap-4{
-  gap: 1rem;
 }
 
 .gap-x-20{
@@ -1060,15 +1048,6 @@ body {
   border-radius: 0.75rem;
 }
 
-.border{
-  border-width: 1px;
-}
-
-.border-gray-400{
-  --tw-border-opacity: 1;
-  border-color: rgb(156 163 175 / var(--tw-border-opacity));
-}
-
 .bg-abu{
   --tw-bg-opacity: 1;
   background-color: rgb(192 192 192 / var(--tw-bg-opacity));
@@ -1092,11 +1071,6 @@ body {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.object-cover{
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .p-10{
@@ -1262,30 +1236,12 @@ body {
   text-underline-offset: 20px;
 }
 
-.opacity-0{
-  opacity: 0;
-}
-
-.opacity-100{
-  opacity: 1;
-}
-
 .outline{
   outline-style: solid;
 }
 
 .outline-1{
   outline-width: 1px;
-}
-
-.transition-opacity{
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.duration-700{
-  transition-duration: 700ms;
 }
 
 /* Add custom font-family to Tailwind */
@@ -1361,10 +1317,6 @@ body {
     height: 36rem;
   }
 
-  .lg\:h-screen{
-    height: 100vh;
-  }
-
   .lg\:w-1\/2{
     width: 50%;
   }
@@ -1397,18 +1349,9 @@ body {
     gap: 3rem;
   }
 
-  .lg\:gap-5{
-    gap: 1.25rem;
-  }
-
   .lg\:gap-x-20{
     -moz-column-gap: 5rem;
          column-gap: 5rem;
-  }
-
-  .lg\:px-8{
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
 
   .lg\:text-2xl{

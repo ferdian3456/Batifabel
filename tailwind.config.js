@@ -12,6 +12,9 @@ module.exports = {
       blur: {
         kecil: "1px",
       },
+      screens: {
+        "2xl": "1537px",
+      },
       height: {
         lumayan: "47rem",
         lumayan1: "41rem",
