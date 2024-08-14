@@ -1354,6 +1354,18 @@ body {
     width: 50%;
   }
 
+  .sm\:w-\[10rem\]{
+    width: 10rem;
+  }
+
+  .sm\:w-10{
+    width: 2.5rem;
+  }
+
+  .sm\:w-96{
+    width: 24rem;
+  }
+
   .sm\:flex-row{
     flex-direction: row;
   }
@@ -1621,6 +1633,10 @@ body {
     width: 43rem;
   }
 
+  .xl\:w-\[30rem\]{
+    width: 30rem;
+  }
+
   .xl\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -1639,6 +1655,10 @@ body {
 
   .\32xl\:w-full{
     width: 100%;
+  }
+
+  .\32xl\:w-\[43rem\]{
+    width: 43rem;
   }
 
   .\32xl\:text-2xl{
