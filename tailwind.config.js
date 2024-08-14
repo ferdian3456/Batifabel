@@ -14,6 +14,7 @@ module.exports = {
       },
       screens: {
         "2xl": "1537px",
+        sm: "641px",
       },
       height: {
         lumayan: "47rem",
