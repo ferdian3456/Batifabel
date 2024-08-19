@@ -1,507 +1,1110 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="./output.css" rel="stylesheet" />
-        <link rel="icon" type="x-icon" href="public/img/icon.jpg">
+        <link rel="icon" type="x-icon" href="public/img/icon.jpg" />
         <title>Batifabel</title>
+        <link href="./output.css" rel="stylesheet" />
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
+        <style>
+            .accordion-content {
+                display: none;
+            }
+            .accordion-content.active {
+                display: block;
+            }
+        </style>
     </head>
-    <style>
-        .accordion-content {
-            display: none;
-        }
-        .accordion-content.active {
-            display: block;
-        }
-    </style>
     <body>
-        <nav class="p-3 shadow-xl">
-            <div class="container mx-auto flex items-center justify-between">
-              <a href="index.html">
-                <img src="public/img/Logo.png" class="h-14" alt="Logo"/>
-              </a>
-
-              <!-- Hamburger Icon -->
-              <div class="block lg:hidden">
-                <button id="menu-button" class="text-black focus:outline-none">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                  </svg>
-                </button>
-              </div>
-
-              <!-- Menu Items -->
-              <div id="menu" class="hidden lg:flex lg:items-center lg:gap-12">
-                <a href="#pameran" class="px-4 text-black text-xl hover:font-bold">Pameran</a>
-                <a href="pilihan.html" class="px-4 text-black text-xl hover:font-bold">Model</a>
-                <a href="lokasi.html" class="px-4 text-black text-xl hover:font-bold">Lokasi</a>
-                <a href="#faq" class="px-4 text-black text-xl hover:font-bold">FAQ</a>
-              </div>
-
-              <!-- Contact Button -->
-              <div class="hidden lg:block">
-                <a href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0" class="outline outline-1 cursor-pointer">
-                  <h1 class="px-3 font-semibold py-2 hover:font-bold outline outline-1">Hubungi Kami</h1>
+        <div class="shadow-xl">
+            <div
+                class="mx-auto container flex items-center gap-x-20 lg:gap-x-14 py-3 px-3 justify-center"
+            >
+                <a
+                    href="index.html"
+                    class="xl:max-w-[10%] 2xl:max-w-[12%] max-w-[30%] mr-auto"
+                >
+                    <img src="public/img/Logo.png" />
                 </a>
-              </div>
-            </div>
+                <a
+                    href="index.html#pameran"
+                    class="hidden sm:block 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                >
+                    <h1
+                        class="xl:text-md 2xl:text-xl 2xl:hover:font-bold xl:hover:font-bold"
+                    >
+                        Pameran
+                    </h1>
+                </a>
+                <a
+                    href="model.html"
+                    class="hidden sm:block 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                >
+                    <h1
+                        class="xl:text-md 2xl:text-xl 2xl:hover:font-bold xl:hover:font-bold"
+                    >
+                        Model
+                    </h1>
+                </a>
+                <a
+                    href="lokasi.html"
+                    class="hidden sm:block 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                >
+                    <h1
+                        class="xl:text-md 2xl:text-xl 2xl:hover:font-bold xl:hover:font-bold"
+                    >
+                        Lokasi
+                    </h1>
+                </a>
+                <a
+                    href="index.html#faq"
+                    class="mr-auto hidden sm:block 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                >
+                    <h1
+                        class="xl:text-md 2xl:text-xl 2xl:hover:font-bold xl:hover:font-bold"
+                    >
+                        FAQ
+                    </h1>
+                </a>
+                <a
+                    href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0"
+                    class="2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                >
+                    <h1
+                        class="hidden 2xl:text-lg 2xl:text-bold xl:text-sm xl:px-2 xl:py-2 xl:text-bold sm:block hover:bg-black hover:text-white ml-auto font-semibold hover:font-bold outline outline-1 px-3 py-2 2xl:hover:font-bold xl:hover:font-bold 2xl:hover:scale-[1] xl:hover:scale-[1]"
+                    >
+                        Hubungi Kami
+                    </h1>
+                </a>
 
-            <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-50">
-                  <div class="flex flex-col p-4">
-                    <a href="#pameran" class="py-2 text-black text-xl hover:font-bold">Pameran</a>
-                    <a href="pilihan.html" class="py-2 text-black text-xl hover:font-bold">Model</a>
-                    <a href="lokasi.html" class="py-2 text-black text-xl hover:font-bold">Lokasi</a>
-                    <a href="#faq" class="py-2 text-black text-xl hover:font-bold">FAQ</a>
-                    <a href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0" class="py-2 text-black text-xl hover:font-bold">Hubungi Kami</a>
-                    <button id="close-menu" class="mt-4 text-black">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                      </svg>
+                <div class="sm:hidden flex flex-col" x-data="{ open: false }">
+                    <button @click="open = !open">
+                        <!-- Hamburger Icon -->
+                        <svg
+                            x-show="!open"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                            />
+                        </svg>
+                        <!-- Close Icon -->
+                        <svg
+                            x-show="open"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
                     </button>
-                  </div>
+
+                    <!-- Dropdown Menu -->
+                    <div
+                        x-show="open"
+                        class="flex flex-col items-center mt-2 space-y-2 bg-white py-2 w-full shadow-lg rounded"
+                    >
+                        <a href="#" class="text-gray-800 hover:text-blue-500"
+                            >Link One</a
+                        >
+                        <a href="#" class="text-gray-800 hover:text-blue-500"
+                            >Link Two</a
+                        >
+                        <a href="#" class="text-gray-800 hover:text-blue-500"
+                            >Link Three</a
+                        >
+                    </div>
                 </div>
-              </nav>
-
-       <div class="h-full w-full bg-abu">
-         <div class="container mx-auto flex sm:flex-row h-mayan w-full overflow-hidden">
-            <div class="h-fit py-8">
-             <h1 class="text-6xl leading-tight font-semibold w-[25rem]">Pilihan batik terbaik untuk Anda yang berkelas</h1>
-             <h1 class="text-xl  my-4 w-[23rem]">Penyedia berbagai macam model dan motif batik untuk berbagai usia yang diproduksi oleh teman-teman difabel bisu tuli yang tergabung dalam UMKM Anindya Batik Art.</h1>
-             <div class="flex my-8 gap-x-5">
-               <a href="pilihan.html"><h1 class="px-3 py-2 bg-black text-white font-semibold  rounded-full hover:font-bold">Pilih Model</h1></a>
-               <a href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0"><h1 class="px-3 py-2 bg-gray-200 text-black font-semibold outline-1 outline  hover:bg-gray-400 cursor-pointer hover:font-bold">Hubungi Kami</h1></a>
-             </div>
-           </div>
-           <div class="ml-hero slides h-full w-full relative hidden sm:block">
-               <img src="public/img/hero.jpg"
-                    alt="Image #1" class="slide w-full h-full hidden rounded-xl"
-               />
-               <img src="public/img/hero2.jpg"
-                    alt="Image #2" class="slide w-full h-full hidden rounded-xl"
-               />
-               <img src="public/img/hero3.jpg"
-                    alt="Image #3" class="slides w-full h-full hidden rounded-xl"
-               />
-               <div class="dots absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-                   <a href="#slide-1" onclick="goToSlide(0)" class="w-3 h-3 rounded-full bg-white"></a>
-                   <a href="#slide-2" onclick="goToSlide(1)" class="w-3 h-3 rounded-full bg-white"></a>
-                   <a href="#slide-3" onclick="goToSlide(2)" class="w-3 h-3 rounded-full bg-white"></a>
-               </div>
-           </div>
-
-         </div>
-       </div>
-
-       <div class="container mx-auto w-full py-8 sm:py-16 md:py-24 lg:py-32">
-           <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold underline underline-offset-[10px] sm:underline-offset-[15px] md:underline-offset-[20px]">Koleksi Kami</h1>
-           <div class="mt-8 sm:mt-12 md:mt-16 mb-6 gap-4 sm:gap-6 md:gap-8 lg:gap-24 flex flex-col sm:flex-row flex-wrap">
-               <div class="sm:w-1/2 lg:w-1/5 mb-6">
-                   <img src="public/img/model/Batik6.png" class="w-full h-auto cursor-pointer hover:scale-[1.05] transition-transform duration-300 outline outline-1"/>
-                   <h2 class="text-xl sm:text-2xl md:text-3xl mt-4 mb-2 line-clamp-2">Dress Batik Parang Shanghai Kombinasi Emboss</h2>
-                   <p class="text-lg sm:text-xl md:text-2xl font-bold">Rp. 300.000,00</p>
-               </div>
-               <div class="sm:w-1/2 lg:w-1/5 mb-6">
-                   <img src="public/img/model/Batik1.png" class="w-full h-auto cursor-pointer hover:scale-[1.05] transition-transform duration-300 outline outline-1"/>
-                   <h2 class="text-xl sm:text-2xl md:text-3xl mt-4 mb-2">Batik Parang Bahan Katun Paris</h2>
-                   <p class="text-lg sm:text-xl md:text-2xl font-bold">Rp. 150.000,00</p>
-               </div>
-               <div class="sm:w-1/2 lg:w-1/5 mb-6">
-                   <img src="public/img/model/Batik2.png" class="w-full h-auto cursor-pointer hover:scale-[1.05] transition-transform duration-300 outline outline-1"/>
-                   <h2 class="text-xl sm:text-2xl md:text-3xl mt-4 mb-2 line-clamp-2">Batik Abstrak dengan kombinasi Kawung dan Trikot.</h2>
-                   <p class="text-lg sm:text-xl md:text-2xl font-bold">Rp. 300.000,00</p>
-               </div>
-               <div class="sm:w-1/2 sm:h-1/2 lg:w-1/5 mb-6">
-                   <img src="public/img/model/Batik3.png" class="w-full h-auto cursor-pointer hover:scale-[1.05] transition-transform duration-300 outline outline-1"/>
-                   <h2 class="text-xl sm:text-2xl md:text-3xl mt-4 mb-2">Batik Tunik Abstrak Kontemporer</h2>
-                   <p class="text-lg sm:text-xl md:text-2xl font-bold">Rp. 400.000,00</p>
-               </div>
-           </div>
-           <div class="container mx-auto">
-               <a href="pilihan.html" class="inline-block">
-                   <h2 class="text-black px-4 sm:px-6 py-2 sm:py-3 text-xl sm:text-2xl mt-6 sm:mt-8 md:mt-10 font-semibold outline outline-1 cursor-pointer hover:bg-black hover:text-white hover:font-bold transition-colors duration-300">Lainnya</h2>
-               </a>
-           </div>
-       </div>
-
-       <div class="container mx-auto px-4 md:mt-5">
-         <h1 class="text-center text-3xl font-semibold md:text-5xl">Kenapa harus kami?</h1>
-         <div class="mt-8 grid grid-cols-1 gap-8 md:mt-16  md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-           <div class="flex flex-col items-center md:flex-row md:items-start">
-             <div class="mb-4 flex h-14 w-16 items-center justify-center rounded-sm bg-gray-500 px-3 py-2 md:mb-0 md:mr-5">
-               <svg aria-hidden="true" width="40" height="40" fill="none" viewBox="0 0 24 24">
-                 <path stroke="currentColor" class="text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5" />
-               </svg>
-             </div>
-             <div class="text-center md:text-left">
-               <h2 class="mb-2 text-2xl font-semibold md:text-3xl">Tepercaya</h2>
-               <p class="text-lg md:text-2xl">Anindya Batik menjalin kerja sama dengan banyak instansi pemerintahan dan swasta untuk pemesanan seragam secara grosir</p>
-             </div>
-           </div>
-
-           <div class="flex flex-col items-center md:flex-row md:items-start">
-             <div class="mb-4 flex h-14 w-16 items-center justify-center rounded-sm bg-gray-500 px-3 py-2 md:mb-0 md:mr-5">
-               <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M7.3,11.4,10.1,3a.6.6,0,0,1,.8-.3l1,.5a2.6,2.6,0,0,1,1.4,2.3V9.4h6.4a2,2,0,0,1,1.9,2.5l-2,8a2,2,0,0,1-1.9,1.5H4.3a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h3v10" fill="#0000" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-               </svg>
-             </div>
-             <div class="text-center md:text-left">
-               <h2 class="mb-2 text-2xl font-semibold md:text-3xl">Berkualitas</h2>
-               <p class="text-lg md:text-2xl">Anindya Batik memberikan bahan kain dan jahitan dengan kualitas terbaik di kelas harganya</p>
-             </div>
-           </div>
-
-           <div class="flex flex-col items-center md:flex-row md:items-start">
-             <div class="mb-4 flex h-14 w-16 items-center justify-center rounded-sm bg-gray-500 px-3 py-2 md:mb-0 md:mr-5">
-               <svg width="40" height="40" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path fill="#FFFFFF" d="M12.7003 17.1099V18.22C12.7003 18.308 12.6829 18.395 12.6492 18.4763C12.6156 18.5576 12.5662 18.6316 12.504 18.6938C12.4418 18.7561 12.3679 18.8052 12.2867 18.8389C12.2054 18.8725 12.1182 18.8899 12.0302 18.8899C11.9423 18.8899 11.8551 18.8725 11.7738 18.8389C11.6925 18.8052 11.6187 18.7561 11.5565 18.6938C11.4943 18.6316 11.4449 18.5576 11.4113 18.4763C11.3776 18.395 11.3602 18.308 11.3602 18.22V17.0801C10.9165 17.0072 10.4917 16.8468 10.1106 16.6082C9.72943 16.3695 9.39958 16.0573 9.14023 15.6899C9.04577 15.57 8.99311 15.4226 8.99023 15.27C8.99148 15.1842 9.00997 15.0995 9.04459 15.021C9.0792 14.9425 9.12927 14.8718 9.19177 14.813C9.25428 14.7542 9.32794 14.7087 9.40842 14.679C9.4889 14.6492 9.57455 14.6359 9.66025 14.6399C9.74504 14.6401 9.82883 14.6582 9.90631 14.6926C9.98379 14.7271 10.0532 14.7773 10.1102 14.8401C10.4326 15.2576 10.8657 15.5763 11.3602 15.76V13.21C10.0302 12.69 9.36023 11.9099 9.36023 10.8999C9.38027 10.3592 9.5928 9.84343 9.9595 9.44556C10.3262 9.04769 10.8229 8.79397 11.3602 8.72998V7.62988C11.3602 7.5419 11.3776 7.45482 11.4113 7.37354C11.4449 7.29225 11.4943 7.21847 11.5565 7.15625C11.6187 7.09403 11.6925 7.04466 11.7738 7.01099C11.8551 6.97732 11.9423 6.95996 12.0302 6.95996C12.1182 6.95996 12.2054 6.97732 12.2867 7.01099C12.3679 7.04466 12.4418 7.09403 12.504 7.15625C12.5662 7.21847 12.6156 7.29225 12.6492 7.37354C12.6829 7.45482 12.7003 7.5419 12.7003 7.62988V8.71997C13.0724 8.77828 13.4289 8.91103 13.7485 9.11035C14.0681 9.30967 14.3442 9.57137 14.5602 9.87988C14.6555 9.99235 14.7117 10.1329 14.7202 10.28C14.7229 10.3662 14.7084 10.4519 14.6776 10.5325C14.6467 10.613 14.6002 10.6867 14.5406 10.749C14.481 10.8114 14.4096 10.8613 14.3306 10.8958C14.2516 10.9303 14.1665 10.9487 14.0802 10.95C13.99 10.9475 13.9013 10.9257 13.8202 10.886C13.7391 10.8463 13.6675 10.7897 13.6102 10.72C13.3718 10.4221 13.0575 10.1942 12.7003 10.0601V12.3101L12.9503 12.4099C14.2203 12.9099 15.0103 13.63 15.0103 14.77C14.9954 15.3808 14.7481 15.9629 14.3189 16.3977C13.8897 16.8325 13.3108 17.0871 12.7003 17.1099ZM11.3602 11.73V10.0999C11.1988 10.1584 11.0599 10.2662 10.963 10.408C10.8662 10.5497 10.8162 10.7183 10.8203 10.8899C10.8173 11.0676 10.8669 11.2424 10.963 11.3918C11.0591 11.5413 11.1973 11.6589 11.3602 11.73ZM13.5502 14.8C13.5502 14.32 13.2203 14.03 12.7003 13.8V15.8C12.9387 15.7639 13.1561 15.6427 13.3123 15.459C13.4685 15.2752 13.553 15.0412 13.5502 14.8Z" />
-                 <path d="M18 3.96997H6C4.93913 3.96997 3.92172 4.39146 3.17157 5.1416C2.42142 5.89175 2 6.9091 2 7.96997V17.97C2 19.0308 2.42142 20.0482 3.17157 20.7983C3.92172 21.5485 4.93913 21.97 6 21.97H18C19.0609 21.97 20.0783 21.5485 20.8284 20.7983C21.5786 20.0482 22 19.0308 22 17.97V7.96997C22 6.9091 21.5786 5.89175 20.8284 5.1416C20.0783 4.39146 19.0609 3.96997 18 3.96997Z" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-               </svg>
-             </div>
-             <div class="text-center md:text-left">
-               <h2 class="mb-2 text-2xl font-semibold md:text-3xl">Harga Bersaing</h2>
-               <p class="text-lg md:text-2xl">Harga yang ditawarkan Anindya Batik sangat bersaing dengan value yang dimiliki dibanding dengan kompetitor di kelas harganya</p>
-             </div>
-           </div>
-           <div class="flex flex-col items-center md:flex-row md:items-start">
-             <div class="mb-4 flex h-14 w-16 items-center justify-center rounded-sm bg-gray-500 px-3 py-2 md:mb-0 md:mr-5">
-               <svg fill="#000000" height="40" width="40" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
-                 <path
-                   fill="#FFFFFF"
-                   d="M509.068,297.435C436.242,191.1,418.305,97.874,413.199,85.966c-7.935-18.513-26.076-30.476-46.218-30.476h-78.462
-                                    			c-9.257,0-16.761,7.504-16.761,16.761c0,8.962-6.882,16.218-15.758,16.732c-8.874-0.514-15.758-7.772-15.758-16.732
-                                    			c0-9.257-7.505-16.761-16.761-16.761h-78.462c-20.142,0-38.283,11.963-46.217,30.476c-0.263,0.613-0.489,1.241-0.677,1.883
-                                    			C87.044,125.608,66.049,205.277,2.933,297.435c-4.836,7.061-3.576,16.63,2.923,22.198c20.568,17.623,53.229,35.346,84.897,40.375
-                                    			c-5.16,13.696-10.719,27.252-16.676,40.656c-3.857,8.679,0.268,18.839,9.091,22.37c55.202,22.081,113.338,33.343,172.869,33.476
-                                    			c59.456-0.133,117.592-11.395,172.796-33.476c8.82-3.529,12.95-13.686,9.091-22.37c-5.957-13.403-11.517-26.961-16.677-40.657
-                                    			c31.667-5.031,64.331-22.753,84.898-40.374C512.643,314.066,513.903,304.496,509.068,297.435z M409.886,327.629
-                                    			c-16.162-49.595-27.202-100.825-32.937-153.068c-1.01-9.202-9.279-15.84-18.49-14.832c-9.201,1.01-15.843,9.289-14.831,18.49
-                                    			c8.325,75.854,27.543,150.152,56.64,219.775c-46.399,16.484-94.854,24.886-144.231,24.996
-                                    			c-49.444-0.111-97.906-8.512-144.306-24.996c29.04-69.487,48.3-143.774,56.64-219.775c1.009-9.202-5.632-17.48-14.832-18.49
-                                    			c-9.188-1.002-17.48,5.632-18.49,14.832c-5.732,52.242-16.772,103.471-32.934,153.067c-20.178-1.764-44.329-12.173-62.653-24.53
-                                    			c54.784-84.081,75.518-153.637,90.498-204.684c2.8-5.739,8.623-9.402,15.059-9.402h64.517c6.671,19.124,24.495,32.869,45.971,33.5
-                                    			c0.328,0.009,0.657,0.009,0.986,0c21.475-0.631,39.3-14.375,45.97-33.5h64.517c6.436,0,12.259,3.664,15.06,9.403
-                                    			c18.879,64.332,39.847,126.944,90.498,204.683C454.214,315.453,430.061,325.866,409.886,327.629z"
-                 />
-               </svg>
-             </div>
-             <div class="text-center md:text-left">
-               <h2 class="mb-2 text-2xl font-semibold md:text-3xl">Desain Unik</h2>
-               <p class="text-lg md:text-2xl">Anindya Batik memiliki motif batik eksklusif dan original, serta menyediakan desain jahitan yang unik</p>
-             </div>
-           </div>
-
-           <div class="flex flex-col items-center md:flex-row md:items-start">
-             <div class="mb-4 flex h-14 w-16 items-center justify-center rounded-sm bg-gray-500 px-3 py-2 md:mb-0 md:mr-5">
-               <svg fill="#000000" width="40" height="40" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                 <title>ear-slash</title>
-                 <path fill="#FFFFFF" d="M20.42 23.91c-0.077-0.030-0.167-0.047-0.26-0.047-0.322 0-0.596 0.203-0.701 0.489l-0.002 0.005-0.092 0.277c-0.090 0.299-0.153 0.648-0.177 1.007l-0.001 0.015c-0.016 0.257-0.056 0.496-0.119 0.726l0.006-0.025c-0.091 0.311-0.195 0.576-0.318 0.829l0.014-0.031c-0.252 0.485-0.574 0.897-0.96 1.24l-0.004 0.004c-0.805 0.687-1.821 1.149-2.938 1.279l-0.026 0.002c-0.25 0.034-0.538 0.054-0.831 0.054-0.894 0-1.745-0.181-2.52-0.509l0.042 0.016c-1.001-0.418-1.802-1.151-2.296-2.073l-0.012-0.024c-0.3-0.609-0.476-1.326-0.476-2.084 0-0.021 0-0.042 0-0.064l-0 0.003c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0c-0 0.017-0 0.038-0 0.058 0 1.004 0.234 1.953 0.652 2.795l-0.016-0.037c0.667 1.262 1.727 2.242 3.015 2.79l0.040 0.015c0.889 0.389 1.926 0.615 3.015 0.615 0.011 0 0.022-0 0.032-0h-0.002c0.001 0 0.003 0 0.004 0 0.368 0 0.73-0.024 1.086-0.071l-0.042 0.005c1.457-0.168 2.75-0.763 3.778-1.656l-0.009 0.007c0.528-0.47 0.965-1.029 1.29-1.656l0.015-0.032c0.144-0.288 0.28-0.629 0.386-0.983l0.012-0.047c0.088-0.294 0.15-0.636 0.173-0.988l0.001-0.014c0.017-0.264 0.058-0.51 0.123-0.747l-0.006 0.026 0.070-0.209c0.029-0.076 0.045-0.164 0.045-0.256 0-0.322-0.202-0.597-0.487-0.705l-0.005-0.002zM14.75 21c0.003-0.59 0.183-1.137 0.49-1.592l-0.007 0.010c0.080-0.117 0.127-0.262 0.127-0.418 0-0.414-0.336-0.75-0.75-0.75-0.258 0-0.486 0.131-0.621 0.33l-0.002 0.003c-0.459 0.68-0.733 1.516-0.737 2.417v0.001c0 2.34-2.5 2.34-2.5 0 0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0c-0.011 0.093-0.017 0.2-0.017 0.309 0 1.552 1.225 2.819 2.761 2.886l0.006 0c1.542-0.067 2.767-1.334 2.767-2.886 0-0.109-0.006-0.216-0.018-0.322l0.001 0.013zM30.531 29.469l-7.91-7.909c0.234-0.302 0.475-0.571 0.732-0.822l0.002-0.002c0.25-0.25 0.5-0.5 0.729-0.777 1.165-1.418 2.019-3.136 2.431-5.019l0.015-0.079c0.145-0.729 0.228-1.567 0.228-2.425 0-0.153-0.003-0.305-0.008-0.457l0.001 0.022c0-6.951-4.492-10.078-8.338-10.645-0.435-0.070-0.936-0.11-1.447-0.11-3.94 0-7.321 2.39-8.774 5.8l-0.024 0.062-5.638-5.637c-0.135-0.131-0.32-0.212-0.523-0.212-0.414 0-0.75 0.336-0.75 0.75 0 0.203 0.081 0.388 0.213 0.523l27.999 28.001c0.136 0.136 0.324 0.22 0.531 0.22 0.415 0 0.751-0.336 0.751-0.751 0-0.207-0.084-0.395-0.22-0.531v0zM18.193 2.839c3.256 0.479 7.057 3.166 7.057 9.161 0.005 0.122 0.007 0.265 0.007 0.409 0 0.756-0.071 1.496-0.206 2.213l0.012-0.074c-0.373 1.716-1.119 3.218-2.151 4.476l0.015-0.018c-0.197 0.238-0.416 0.455-0.631 0.67-0.251 0.252-0.502 0.522-0.742 0.816l-3.009-3.009c0.692-0.858 1.11-1.961 1.11-3.162 0-1.093-0.347-2.105-0.936-2.932l0.011 0.015c-0.863-1.159-2.229-1.901-3.769-1.901-0.862 0-1.67 0.233-2.364 0.639l0.022-0.012c0.433-2.072 2.245-3.606 4.415-3.606 0.057 0 0.114 0.001 0.171 0.003l-0.008-0c2.512 0.207 4.472 2.297 4.472 4.844 0 0.222-0.015 0.441-0.044 0.655l0.003-0.025c0 0.414 0.336 0.75 0.75 0.75s0.75-0.336 0.75-0.75v0c0.020-0.191 0.032-0.414 0.032-0.638 0-3.348-2.592-6.092-5.879-6.333l-0.021-0.001c-0.054-0.002-0.118-0.003-0.183-0.003-2.981 0-5.457 2.158-5.954 4.996l-0.005 0.036-1.805-1.804c1.102-3.228 4.109-5.508 7.648-5.508 0.435 0 0.861 0.034 1.277 0.101l-0.046-0.006zM12.84 11.779c0.521-0.439 1.185-0.722 1.914-0.771l0.010-0.001c0.028-0.001 0.060-0.001 0.093-0.001 1.081 0 2.045 0.505 2.668 1.292l0.005 0.007c0.384 0.556 0.614 1.244 0.614 1.986 0 0.79-0.26 1.519-0.7 2.107l0.007-0.009z"></path>
-               </svg>
-             </div>
-             <div class="text-center md:text-left">
-               <h2 class="mb-2 text-2xl font-semibold md:text-3xl">Ramah Difabel</h2>
-               <p class="text-lg md:text-2xl">Anindya Batik memberdayakan teman teman difabel dengan memberikan mereka kesempatan untuk berkreasi melalui batik</p>
-             </div>
-           </div>
-         </div>
-       </div>
-
-
-
-       <!-- <div class="h-full mx-auto container w-full mt-32">
-           <h1 class="text-5xl flex justify-center font-semibold">Kenapa harus kami?</h1>
-           <div class="mt-16 grid grid-cols-3  gap-y-16 grid-rows-2 p-10 h-fit gap-x-20">
-               <div class="flex justify-center w-fit h-fit">
-                   <div class="m-5 bg-gray-500 w-16 h-14 px-3 py-2 rounded-sm"><svg aria-hidden="true" width="40" height="40" fill="none" viewBox="0 0 24 24">
-                     <path stroke="currentColor" class="text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/>
-                   </svg>
-                   </div>
-               <div>
-                   <h1 class="text-3xl m-5 font-semibold">Tepercaya</h1>
-                   <h1 class="text-2xl m-5 w-[18rem]">Anindya Batik menjalin kerja sama dengan banyak instansi pemerintahan dan swasta untuk pemesanan seragam secara grosir</h1>
-               </div>
-               </div>
-
-               <div class="flex justify-center w-fit h-fit">
-                   <div class="m-5 bg-gray-500 w-16 h-14 px-3 py-2 rounded-sm"><svg width="40"  height="40" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
-                   <title/>
-                   <path d="M7.3,11.4,10.1,3a.6.6,0,0,1,.8-.3l1,.5a2.6,2.6,0,0,1,1.4,2.3V9.4h6.4a2,2,0,0,1,1.9,2.5l-2,8a2,2,0,0,1-1.9,1.5H4.3a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h3v10" fill="#0000" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                   </g>
-                   </g>
-                   </svg>
-                   </div>
-               <div>
-                   <h1 class="text-3xl m-5 font-semibold">Berkualitas</h1>
-                   <h1 class="text-2xl m-5 w-[18rem]">Anindya Batik memberikan bahan kain dan jahitan dengan kualitas terbaik di kelas harganya</h1>
-               </div>
-               </div>
-
-               <div class="flex justify-center w-fit h-fit">
-                   <div class="m-5 bg-gray-500 w-16 h-14 px-3 py-2 rounded-sm"><svg width="40" height="40" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   <path fill="#FFFFFF" d="M12.7003 17.1099V18.22C12.7003 18.308 12.6829 18.395 12.6492 18.4763C12.6156 18.5576 12.5662 18.6316 12.504 18.6938C12.4418 18.7561 12.3679 18.8052 12.2867 18.8389C12.2054 18.8725 12.1182 18.8899 12.0302 18.8899C11.9423 18.8899 11.8551 18.8725 11.7738 18.8389C11.6925 18.8052 11.6187 18.7561 11.5565 18.6938C11.4943 18.6316 11.4449 18.5576 11.4113 18.4763C11.3776 18.395 11.3602 18.308 11.3602 18.22V17.0801C10.9165 17.0072 10.4917 16.8468 10.1106 16.6082C9.72943 16.3695 9.39958 16.0573 9.14023 15.6899C9.04577 15.57 8.99311 15.4226 8.99023 15.27C8.99148 15.1842 9.00997 15.0995 9.04459 15.021C9.0792 14.9425 9.12927 14.8718 9.19177 14.813C9.25428 14.7542 9.32794 14.7087 9.40842 14.679C9.4889 14.6492 9.57455 14.6359 9.66025 14.6399C9.74504 14.6401 9.82883 14.6582 9.90631 14.6926C9.98379 14.7271 10.0532 14.7773 10.1102 14.8401C10.4326 15.2576 10.8657 15.5763 11.3602 15.76V13.21C10.0302 12.69 9.36023 11.9099 9.36023 10.8999C9.38027 10.3592 9.5928 9.84343 9.9595 9.44556C10.3262 9.04769 10.8229 8.79397 11.3602 8.72998V7.62988C11.3602 7.5419 11.3776 7.45482 11.4113 7.37354C11.4449 7.29225 11.4943 7.21847 11.5565 7.15625C11.6187 7.09403 11.6925 7.04466 11.7738 7.01099C11.8551 6.97732 11.9423 6.95996 12.0302 6.95996C12.1182 6.95996 12.2054 6.97732 12.2867 7.01099C12.3679 7.04466 12.4418 7.09403 12.504 7.15625C12.5662 7.21847 12.6156 7.29225 12.6492 7.37354C12.6829 7.45482 12.7003 7.5419 12.7003 7.62988V8.71997C13.0724 8.77828 13.4289 8.91103 13.7485 9.11035C14.0681 9.30967 14.3442 9.57137 14.5602 9.87988C14.6555 9.99235 14.7117 10.1329 14.7202 10.28C14.7229 10.3662 14.7084 10.4519 14.6776 10.5325C14.6467 10.613 14.6002 10.6867 14.5406 10.749C14.481 10.8114 14.4096 10.8613 14.3306 10.8958C14.2516 10.9303 14.1665 10.9487 14.0802 10.95C13.99 10.9475 13.9013 10.9257 13.8202 10.886C13.7391 10.8463 13.6675 10.7897 13.6102 10.72C13.3718 10.4221 13.0575 10.1942 12.7003 10.0601V12.3101L12.9503 12.4099C14.2203 12.9099 15.0103 13.63 15.0103 14.77C14.9954 15.3808 14.7481 15.9629 14.3189 16.3977C13.8897 16.8325 13.3108 17.0871 12.7003 17.1099ZM11.3602 11.73V10.0999C11.1988 10.1584 11.0599 10.2662 10.963 10.408C10.8662 10.5497 10.8162 10.7183 10.8203 10.8899C10.8173 11.0676 10.8669 11.2424 10.963 11.3918C11.0591 11.5413 11.1973 11.6589 11.3602 11.73ZM13.5502 14.8C13.5502 14.32 13.2203 14.03 12.7003 13.8V15.8C12.9387 15.7639 13.1561 15.6427 13.3123 15.459C13.4685 15.2752 13.553 15.0412 13.5502 14.8Z" fill="#000000"/>
-                   <path d="M18 3.96997H6C4.93913 3.96997 3.92172 4.39146 3.17157 5.1416C2.42142 5.89175 2 6.9091 2 7.96997V17.97C2 19.0308 2.42142 20.0482 3.17157 20.7983C3.92172 21.5485 4.93913 21.97 6 21.97H18C19.0609 21.97 20.0783 21.5485 20.8284 20.7983C21.5786 20.0482 22 19.0308 22 17.97V7.96997C22 6.9091 21.5786 5.89175 20.8284 5.1416C20.0783 4.39146 19.0609 3.96997 18 3.96997Z" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                   </svg>
-                   </div>
-               <div>
-                   <h1 class="text-3xl m-5 font-semibold">Harga Bersaing</h1>
-                   <h1 class="text-2xl m-5 w-[16rem]">Harga yang ditawarkan Anindya Batik sangat bersaing dengan value yang dimiliki dibanding dengan kompetitor di kelas harganya</h1>
-               </div>
-               </div>
-
-               <div class="col-span-3">
-                   <div class="flex justify-center">
-                       <div class="flex justify-center  w-fit h-fit">
-                           <div class="m-5 bg-gray-500 w-16 h-14 px-3 py-2 rounded-sm"><svg fill="#000000" height="40" width="40" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
-                           <g>
-                               	<g>
-                              		<path fill="#FFFFFF" d="M509.068,297.435C436.242,191.1,418.305,97.874,413.199,85.966c-7.935-18.513-26.076-30.476-46.218-30.476h-78.462
-                             			c-9.257,0-16.761,7.504-16.761,16.761c0,8.962-6.882,16.218-15.758,16.732c-8.874-0.514-15.758-7.772-15.758-16.732
-                             			c0-9.257-7.505-16.761-16.761-16.761h-78.462c-20.142,0-38.283,11.963-46.217,30.476c-0.263,0.613-0.489,1.241-0.677,1.883
-                             			C87.044,125.608,66.049,205.277,2.933,297.435c-4.836,7.061-3.576,16.63,2.923,22.198c20.568,17.623,53.229,35.346,84.897,40.375
-                             			c-5.16,13.696-10.719,27.252-16.676,40.656c-3.857,8.679,0.268,18.839,9.091,22.37c55.202,22.081,113.338,33.343,172.869,33.476
-                             			c59.456-0.133,117.592-11.395,172.796-33.476c8.82-3.529,12.95-13.686,9.091-22.37c-5.957-13.403-11.517-26.961-16.677-40.657
-                             			c31.667-5.031,64.331-22.753,84.898-40.374C512.643,314.066,513.903,304.496,509.068,297.435z M409.886,327.629
-                             			c-16.162-49.595-27.202-100.825-32.937-153.068c-1.01-9.202-9.279-15.84-18.49-14.832c-9.201,1.01-15.843,9.289-14.831,18.49
-                             			c8.325,75.854,27.543,150.152,56.64,219.775c-46.399,16.484-94.854,24.886-144.231,24.996
-                             			c-49.444-0.111-97.906-8.512-144.306-24.996c29.04-69.487,48.3-143.774,56.64-219.775c1.009-9.202-5.632-17.48-14.832-18.49
-                             			c-9.188-1.002-17.48,5.632-18.49,14.832c-5.732,52.242-16.772,103.471-32.934,153.067c-20.178-1.764-44.329-12.173-62.653-24.53
-                             			c54.784-84.081,75.518-153.637,90.498-204.684c2.8-5.739,8.623-9.402,15.059-9.402h64.517c6.671,19.124,24.495,32.869,45.971,33.5
-                             			c0.328,0.009,0.657,0.009,0.986,0c21.475-0.631,39.3-14.375,45.97-33.5h64.517c6.436,0,12.259,3.664,15.06,9.403
-                             			c18.879,64.332,39.847,126.944,90.498,204.683C454.214,315.453,430.061,325.866,409.886,327.629z"/>
-                               	</g>
-                           </g>
-                           </svg>
-                           </div>
-                       <div>
-                           <h1 class="text-3xl m-5 font-semibold">Desain Unik</h1>
-                           <h1 class="text-2xl m-5 w-[18rem]">Anindya Batik memiliki motif batik eksklusif dan original, serta menyediakan desain jahitan yang unik</h1>
-                       </div>
-                       </div>
-
-                       <div class="flex justify-center w-fit h-fit">
-                           <div class="m-5 bg-gray-500 w-16 h-14 px-3 py-2 rounded-sm"><svg fill="#000000" width="40" height="40" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                           <title>ear-slash</title>
-                           <path fill="#FFFFFF" d="M20.42 23.91c-0.077-0.030-0.167-0.047-0.26-0.047-0.322 0-0.596 0.203-0.701 0.489l-0.002 0.005-0.092 0.277c-0.090 0.299-0.153 0.648-0.177 1.007l-0.001 0.015c-0.016 0.257-0.056 0.496-0.119 0.726l0.006-0.025c-0.091 0.311-0.195 0.576-0.318 0.829l0.014-0.031c-0.252 0.485-0.574 0.897-0.96 1.24l-0.004 0.004c-0.805 0.687-1.821 1.149-2.938 1.279l-0.026 0.002c-0.25 0.034-0.538 0.054-0.831 0.054-0.894 0-1.745-0.181-2.52-0.509l0.042 0.016c-1.001-0.418-1.802-1.151-2.296-2.073l-0.012-0.024c-0.3-0.609-0.476-1.326-0.476-2.084 0-0.021 0-0.042 0-0.064l-0 0.003c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0c-0 0.017-0 0.038-0 0.058 0 1.004 0.234 1.953 0.652 2.795l-0.016-0.037c0.667 1.262 1.727 2.242 3.015 2.79l0.040 0.015c0.889 0.389 1.926 0.615 3.015 0.615 0.011 0 0.022-0 0.032-0h-0.002c0.001 0 0.003 0 0.004 0 0.368 0 0.73-0.024 1.086-0.071l-0.042 0.005c1.457-0.168 2.75-0.763 3.778-1.656l-0.009 0.007c0.528-0.47 0.965-1.029 1.29-1.656l0.015-0.032c0.144-0.288 0.28-0.629 0.386-0.983l0.012-0.047c0.088-0.294 0.15-0.636 0.173-0.988l0.001-0.014c0.017-0.264 0.058-0.51 0.123-0.747l-0.006 0.026 0.070-0.209c0.029-0.076 0.045-0.164 0.045-0.256 0-0.322-0.202-0.597-0.487-0.705l-0.005-0.002zM14.75 21c0.003-0.59 0.183-1.137 0.49-1.592l-0.007 0.010c0.080-0.117 0.127-0.262 0.127-0.418 0-0.414-0.336-0.75-0.75-0.75-0.258 0-0.486 0.131-0.621 0.33l-0.002 0.003c-0.459 0.68-0.733 1.516-0.737 2.417v0.001c0 2.34-2.5 2.34-2.5 0 0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0c-0.011 0.093-0.017 0.2-0.017 0.309 0 1.552 1.225 2.819 2.761 2.886l0.006 0c1.542-0.067 2.767-1.334 2.767-2.886 0-0.109-0.006-0.216-0.018-0.322l0.001 0.013zM30.531 29.469l-7.91-7.909c0.234-0.302 0.475-0.571 0.732-0.822l0.002-0.002c0.25-0.25 0.5-0.5 0.729-0.777 1.165-1.418 2.019-3.136 2.431-5.019l0.015-0.079c0.145-0.729 0.228-1.567 0.228-2.425 0-0.153-0.003-0.305-0.008-0.457l0.001 0.022c0-6.951-4.492-10.078-8.338-10.645-0.435-0.070-0.936-0.11-1.447-0.11-3.94 0-7.321 2.39-8.774 5.8l-0.024 0.062-5.638-5.637c-0.135-0.131-0.32-0.212-0.523-0.212-0.414 0-0.75 0.336-0.75 0.75 0 0.203 0.081 0.388 0.213 0.523l27.999 28.001c0.136 0.136 0.324 0.22 0.531 0.22 0.415 0 0.751-0.336 0.751-0.751 0-0.207-0.084-0.395-0.22-0.531v0zM18.193 2.839c3.256 0.479 7.057 3.166 7.057 9.161 0.005 0.122 0.007 0.265 0.007 0.409 0 0.756-0.071 1.496-0.206 2.213l0.012-0.074c-0.373 1.716-1.119 3.218-2.151 4.476l0.015-0.018c-0.197 0.238-0.416 0.455-0.631 0.67-0.251 0.252-0.502 0.522-0.742 0.816l-3.009-3.009c0.692-0.858 1.11-1.961 1.11-3.162 0-1.093-0.347-2.105-0.936-2.932l0.011 0.015c-0.863-1.159-2.229-1.901-3.769-1.901-0.862 0-1.67 0.233-2.364 0.639l0.022-0.012c0.433-2.072 2.245-3.606 4.415-3.606 0.057 0 0.114 0.001 0.171 0.003l-0.008-0c2.512 0.207 4.472 2.297 4.472 4.844 0 0.222-0.015 0.441-0.044 0.655l0.003-0.025c0 0.414 0.336 0.75 0.75 0.75s0.75-0.336 0.75-0.75v0c0.020-0.191 0.032-0.414 0.032-0.638 0-3.348-2.592-6.092-5.879-6.333l-0.021-0.001c-0.054-0.002-0.118-0.003-0.183-0.003-2.981 0-5.457 2.158-5.954 4.996l-0.005 0.036-1.805-1.804c1.102-3.228 4.109-5.508 7.648-5.508 0.435 0 0.861 0.034 1.277 0.101l-0.046-0.006zM12.84 11.779c0.521-0.439 1.185-0.722 1.914-0.771l0.010-0.001c0.028-0.001 0.060-0.001 0.093-0.001 1.081 0 2.045 0.505 2.668 1.292l0.005 0.007c0.384 0.556 0.614 1.244 0.614 1.986 0 0.79-0.26 1.519-0.7 2.107l0.007-0.009z"></path>
-                           </svg>
-                           </div>
-                        <div class="">
-                            <h1 class="text-3xl m-5 font-semibold">Ramah Difabel</h1>
-                            <h1 class="text-2xl m-5 w-[18rem]">Anindya Batik memberdayakan teman teman difabel dengan memberikan mereka kesempatan untuk berkreasi melalui batik</h1>
-                            </div>
-                        </div>
-                   </div>
-               </div>
-           </div>
-       </div> -->
-
-       <div class="mt-16 sm:mt-24 md:mt-32 bg-abu py-12 sm:py-16 md:py-20">
-               <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                   <div class="flex flex-col sm:flex-row items-center justify-between">
-                       <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 sm:mb-0">Ingin bekerja sama dengan kami?</h2>
-                       <button class="px-6 py-4 text-xl bg-black text-white cursor-pointer font-semibold hover:font-bold">Hubungi Kami</button>
-                   </div>
-               </div>
+            </div>
         </div>
 
-       <div id="pameran"></div>
+        <div class="bg-abu">
+            <div class="mx-auto container flex w-screen px-3 overflow-hidden">
+                <div class="py-8 2xl:pt-10 2xl:pb-0 xl:pt-5.4 xl:pb-4 w-fit">
+                    <h1
+                        class="2xl:text-6xl 2xl:w-96 2xl:leading-tight 2xl:text-left text-center text-4xl leading-tight font-semibold xl:text-5xl xl:w-72 xl:leading-tight xl:text-left"
+                    >
+                        Pilihan batik terbaik untuk Anda yang berkelas
+                    </h1>
+                    <h1
+                        class="text-center text-sm 2xl:text-xl 2xl:text-left 2xl:w-[23rem] xl:text-md xl:text-left xl:w-[19rem] mt-5 2xl:mt-3"
+                    >
+                        Penyedia berbagai macam model dan motif batik untuk
+                        berbagai usia yang diproduksi oleh teman-teman difabel
+                        bisu tuli yang tergabung dalam UMKM Anindya Batik Art.
+                    </h1>
+                    <div
+                        class="flex mx-auto 2xl:flex 2xl:justify-start xl:flex xl:justify-start justify-center gap-x-5 mt-2 mb-4 xl:mb-0 2xl:pb-5 xl:pb-5"
+                    >
+                        <a href="model.html" class="2xl:hover:scale-[1.05]">
+                            <h1
+                                class="text-sm 2xl:h-10 2xl:w-28 2xl:text-lg xl:h-9 xl:w-24 xl:text-md flex justify-center font-semibold items-center bg-black text-white mt-5 w-24 h-9 rounded-full 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                            >
+                                Pilih Model
+                            </h1>
+                        </a>
+                        <a
+                            href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0"
+                            class="2xl:hover:scale-[1.05]"
+                        >
+                            <h1
+                                class="text-sm 2xl:h-10 2xl:w-32 2xl:text-lg xl:h-9 xl:w-28 xl:text-md flex justify-center font-semibold items-center outline outline-1 mt-5 w-24 h-9 bg-gray-200 text-black 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                            >
+                                Hubungi Kami
+                            </h1>
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="sm:block hidden ml-auto 2xl:w-[55rem] 2xl:h-[37.5rem] xl:w-[47rem] xl:h-[30rem] slides relative"
+                >
+                    <img
+                        src="public/img/hero.jpg"
+                        alt="Image #1"
+                        class="slide w-full h-full hidden rounded-xl"
+                    />
+                    <img
+                        src="public/img/hero2.jpg"
+                        alt="Image #2"
+                        class="slide w-full h-full hidden rounded-xl"
+                    />
+                    <img
+                        src="public/img/hero3.jpg"
+                        alt="Image #3"
+                        class="slides w-full h-full hidden rounded-xl"
+                    />
+                    <div
+                        class="dots absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10"
+                    >
+                        <a
+                            href="#slide-1"
+                            onclick="goToSlide(0)"
+                            class="w-3 h-3 rounded-full bg-white"
+                        ></a>
+                        <a
+                            href="#slide-2"
+                            onclick="goToSlide(1)"
+                            class="w-3 h-3 rounded-full bg-white"
+                        ></a>
+                        <a
+                            href="#slide-3"
+                            onclick="goToSlide(2)"
+                            class="w-3 h-3 rounded-full bg-white"
+                        ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-       <div class="mt-10 md:mt-32 h-full w-full">
-         <div class="container mx-auto flex flex-col md:flex-row">
-           <!-- Left Column for Logo -->
-           <div class="flex items-center justify-center w-full md:w-1/2">
-             <img src="public/img/Logo.png" alt="Logo" class="w-48 md:w-96 h-24 md:h-32">
-           </div>
-           <!-- Right Column for Timeline -->
-           <div class="relative w-full md:w-1/2 mt-10 md:mt-0">
-             <div class="absolute inset-y-0 w-1 bg-black hidden md:block"></div>
-             <div class="relative my-12 pl-4 md:pl-8">
-               <div class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"></div>
-               <h1 class="text-xl md:text-2xl text-gray-700">15 Mei 2024 - 16 Mei 2024</h1>
-               <h1 class="text-2xl md:text-3xl font-bold">Dekranas Expo 2024</h1>
-               <h1 class="mt-2 text-lg md:text-xl">
-                 Dalam rangka HUT Dekranas ke 44, Pemkot Surakarta bekerja sama dengan Dewan Kerajinan Nasional mengadakan expo dengan menampilkan berbagai produk dari UMKM.
-               </h1>
-             </div>
-             <div class="relative my-12 pl-4 md:pl-8">
-               <div class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"></div>
-               <h1 class="text-xl md:text-2xl text-gray-700">27 Juni 2024 - 29 Juni 2024</h1>
-               <h1 class="text-2xl md:text-3xl font-bold">Hari Keluarga Nasional</h1>
-               <h1 class="mt-2 text-lg md:text-xl">
-                 Pameran UMKM pada Hari Keluarga Nasional (Harganas) ke-31 Tahun 2024 diselenggarakan oleh Badan Kependudukan dan Keluarga Berencana Nasional (BKKBN) di Lapangan Simpang Lima Semarang.
-               </h1>
-             </div>
-             <div class="relative my-12 pl-4 md:pl-8">
-               <div class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"></div>
-               <h1 class="text-xl md:text-2xl text-gray-700">2 Juli 2024 - 8 Juli 2024</h1>
-               <h1 class="text-2xl md:text-3xl font-bold">Jogja Holiday Sale</h1>
-               <h1 class="mt-2 text-lg md:text-xl">
-                 Jogja Holiday Sale di Atrium Plaza Ambarrukmo yang terdiri lebih dari 50+ Tenant mulai dari Batik, Fashion, Hijab, Craft, Jewelry & Lifestyle.
-               </h1>
-             </div>
-             <div class="relative my-12 pl-4 md:pl-8">
-               <div class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"></div>
-               <h1 class="text-xl md:text-2xl text-gray-700">31 Juli 2024 - 4 Agustus 2024</h1>
-               <h1 class="text-2xl md:text-3xl font-bold">Pasar Raya Magelang</h1>
-               <h1 class="mt-2 text-lg md:text-xl">
-                 Pesta Rakyat Terbesar di Kota Magelang yang terdiri dari Pameran UMKM, Festival Balon Udara Magelang, Festival Nasi Goreng Magelangan, dan berbagai acara lainnya.
-               </h1>
-             </div>
-           </div>
-         </div>
-       </div>
+        <div
+            class="mx-auto container p-3 mt-10 2xl:mt-44 2xl:mb-12 xl:mt-[3rem] xl:mb-12"
+        >
+            <h1
+                class="text-3xl 2xl:text-5xl xl:text-4xl font-semibold underline underline-offset-[15px]"
+            >
+                Koleksi Kami
+            </h1>
+            <div
+                class="mt-10 2xl:mt-14 xl:mt-12 grid grid-cols-2 2xl:grid-cols-4 gap-y-8 gap-x-2 2xl:gap-x-20 xl:grid-cols-4 xl:gap-x-4"
+            >
+                <div class="w-fit flex flex-col 2xl:gap-y-3 xl:gap-y-1">
+                    <div
+                        class="xl:w-fit 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                    >
+                        <img
+                            src="public/img/model/Batik6.png"
+                            class="2xl:outline 2xl:outline-1 xl:outline xl:outline-1 2xl:w-full 2xl:h-full cursor-pointer xl:w-[15rem] xl:h-[20rem]"
+                        />
+                    </div>
+                    <h1
+                        class="text-md 2xl:text-2xl xl:text-lg mt-4 xl:mt-3 line-clamp-2 w-[90%]"
+                    >
+                        Dress Batik Parang Shanghai Kombinasi Emboss
+                    </h1>
+                    <h1 class="text-xl 2xl:text-2xl xl:text-md font-semibold">
+                        Rp. 300.000,00
+                    </h1>
+                </div>
+                <div class="w-fit flex flex-col 2xl:gap-y-3 xl:gap-y-1">
+                    <div
+                        class="xl:w-fit 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                    >
+                        <img
+                            src="public/img/model/Batik10.png"
+                            class="2xl:outline 2xl:outline-1 xl:outline xl:outline-1 2xl:w-full 2xl:h-full cursor-pointer xl:w-[15rem] xl:h-[20rem]"
+                        />
+                    </div>
+                    <h1
+                        class="text-md 2xl:text-2xl xl:text-lg mt-4 xl:mt-3 line-clamp-2 w-[90%]"
+                    >
+                        Kemeja Pria Lengan Pendek, Batik Tulis Abstrak
+                        Kontemporer
+                    </h1>
+                    <h1 class="text-xl 2xl:text-2xl xl:text-md font-semibold">
+                        Rp. 350.000,00
+                    </h1>
+                </div>
+                <div class="w-fit flex flex-col 2xl:gap-y-3 xl:gap-y-1">
+                    <div
+                        class="xl:w-fit 2xl:hover:scale-[1.05] xl:hover:scale-[1.05]"
+                    >
+                        <img
+                            src="public/img/model/Batik2.png"
+                            class="2xl:outline 2xl:outline-1 xl:outline xl:outline-1 2xl:w-full 2xl:h-full cursor-pointer xl:w-[15rem] xl:h-[20rem]"
+                        />
+                    </div>
+                    <h1
+                        class="text-md 2xl:text-2xl xl:text-lg mt-4 xl:mt-3 line-clamp-2 w-[90%]"
+                    >
+                        Batik Abstrak dengan kombinasi Kawung dan Trikot.
+                    </h1>
+                    <h1 class="text-xl 2xl:text-2xl xl:text-md font-semibold">
+                        Rp. 300.000,00
+                    </h1>
+                </div>
+                <div class="w-fit flex flex-col 2xl:gap-y-3 xl:gap-y-1">
+                    <div
+                        class="xl:w-fit 2xl:hover:scale-[1. 05] xl:hover:scale-[1.05]"
+                    >
+                        <img
+                            src="public/img/model/Batik11.png"
+                            class="2xl:outline 2xl:outline-1 xl:outline xl:outline-1 2xl:w-full 2xl:h-full cursor-pointer xl:w-[15rem] xl:h-[20rem]"
+                        />
+                    </div>
+                    <h1
+                        class="text-md 2xl:text-2xl xl:text-lg mt-4 xl:mt-3 line-clamp-2 w-[90%]"
+                    >
+                        Kemeja Pria Lengan Pendek, Batik Tulis Abstrak
+                        Kontemporer
+                    </h1>
+                    <h1 class="text-xl 2xl:text-2xl xl:text-md font-semibold">
+                        Rp. 350.000,00
+                    </h1>
+                </div>
+            </div>
+            <a href="model.html">
+                <h1
+                    class="w-20 2xl:w-32 2xl:h-14 2xl:text-2xl xl:w-28 xl:h-10 xl:text-2xl 2xl:mt-10 h-8 mt-6 text-lg font-semibold flex items-center justify-center outline outline-1 hover:bg-black hover:text-white"
+                >
+                    Lainnya
+                </h1>
+            </a>
+        </div>
 
+        <div
+            class="container bg-gray-300 mx-auto mt-10 rounded-xl flex flex-col justify-center gap-y-10 p-7 2xl:grid 2xl:grid-cols-3 2xl:mt-0 2xl:mb-40 2xl:bg-white 2xl:gap-x-10 2xl:gap-y-24 xl:grid xl:grid-cols-3 xl:mt-0 xl:mb-40 xl:bg-white xl:gap-x-10 xl:gap-y-24"
+        >
+            <div class="flex h-fit justify-center col-span-3">
+                <h1 class="text-3xl font-semibold 2xl:text-5xl xl:text-4xl">
+                    Kenapa harus kami?
+                </h1>
+            </div>
+            <div
+                class="flex flex-col items-center gap-y-2 2xl:items-start 2xl:flex-row xl:items-start xl:flex-row xl:flex xl:w-fit"
+            >
+                <div
+                    class="w-fit max-w-[15%] rounded-xl bg-gray-500 p-2 2xl:rounded-none 2xl:max-w-[13%] xl:max-w-[15%] xl:rounded-none"
+                >
+                    <svg
+                        aria-hidden="true"
+                        class="w-full"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke="currentColor"
+                            class="text-white"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 11.917 9.724 16.5 19 7.5"
+                        />
+                    </svg>
+                </div>
+                <div
+                    class="flex flex-col gap-y-5 2xl:ml-10 2xl:my-2 xl:ml-10 xl:my-2"
+                >
+                    <h1
+                        class="text-center font-semibold text-2xl 2xl:w-fit 2xl:text-4xl 2xl:text-left xl:w-fit xl:text-3xl xl:text-left"
+                    >
+                        Tepercaya
+                    </h1>
+                    <h1
+                        class="text-center text-xl 2xl:w-[18rem] 2xl:text-left 2xl:text-2xl xl:w-[18rem] xl:text-left xl:text-xl"
+                    >
+                        Anindya Batik menjalin kerja sama dengan banyak instansi
+                        pemerintahan dan swasta untuk pemesanan seragam secara
+                        grosir
+                    </h1>
+                </div>
+            </div>
 
-       <div class="h-full w-full mt-32">
-           <div class="container mx-auto  grid  grid-cols-2 ">
-               <div class="w-11/12 h-fit">
-                   <h1 class="2xl:text-5xl xl:text-5xl font-semibold sm:text-xl">Tentang Kami</h1>
-                   <h1 class="2xl:text-2xl xl:text-2xl mt-5 xl:w-[30rem] 2xl:w-[43rem] sm:text-lg sm:w-10">Batifabel (Batik Difabel) hadir untuk memenuhi kebutuhan
-                   fashion batik dan tenun secara eksklusif. Batifabel
-                   merupakan platform yang menyediakan berbagai macam model dan
-                   motif batik untuk berbagai usia. Batifabel diproduksi oleh
-                   teman-teman difabel terutama teman bisu tuli yang tergabung
-                   dalam UMKM Anindya Batik Art.</h1>
-                   <h1 class="2xl:text-2xl xl:text-2xl mt-5 xl:w-[30rem] 2xl:w-[43rem] sm:text-lg sm:w-10">Anindya Batik Art berdiri sejak tahun 2010 dengan produk
-                   unggulan fashion batik dan tenun. Saat ini, Anindya Batik
-                   Art memiliki 8 orang karyawan tetap pada bagian produksi
-                   yang seluruhnya adalah teman bisu tuli.</h1>
-               </div>
-               <div class="h-fit w-fit ml-auto mt-video hidden sm:block">
-                   <video
-                       src="public/video/Video Profil Anindya Batik Art.mp4"
-                       controls
-                       muted
-                       loop
-                       class="w-4/5 h-4/5 2xl:w-full 2xl:h-4/5"
-                   ></video>
-               </div>
-           </div>
-       </div>
+            <div
+                class="flex flex-col items-center gap-y-2 2xl:items-start 2xl:flex-row 2xl:flex xl:items-start xl:flex-row xl:flex"
+            >
+                <div
+                    class="w-fit max-w-[15%] rounded-xl bg-gray-500 p-2 2xl:rounded-none 2xl:max-w-[15%] xl:max-w-[15%] xl:rounded-none"
+                >
+                    <svg
+                        class="w-full"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M7.3,11.4,10.1,3a.6.6,0,0,1,.8-.3l1,.5a2.6,2.6,0,0,1,1.4,2.3V9.4h6.4a2,2,0,0,1,1.9,2.5l-2,8a2,2,0,0,1-1.9,1.5H4.3a2,2,0,0,1-2-2v-6a2,2,0,0,1,2-2h3v10"
+                            fill="#0000"
+                            stroke="#FFFFFF"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                        />
+                    </svg>
+                </div>
+                <div
+                    class="flex flex-col gap-y-5 2xl:ml-10 2xl:my-2 xl:ml-10 xl:my-2"
+                >
+                    <h1
+                        class="text-2xl text-center font-semibold 2xl:w-fit 2xl:text-4xl 2xl:text-left xl:w-fit xl:text-3xl xl:text-left"
+                    >
+                        Berkualitas
+                    </h1>
+                    <h1
+                        class="text-center text-xl 2xl:w-[18rem] 2xl:text-left 2xl:text-2xl xl:w-[18rem] xl:text-left xl:text-xl"
+                    >
+                        Anindya Batik memberikan bahan kain dan jahitan dengan
+                        kualitas terbaik di kelas harganya
+                    </h1>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col items-center gap-y-2 2xl:items-start 2xl:flex-row 2xl:flex xl:flex-row xl:items-start xl:flex"
+            >
+                <div
+                    class="w-fit max-w-[15%] rounded-xl bg-gray-500 p-2 2xl:max-w-[15%] 2xl:rounded-none xl:max-w-[15%] xl:rounded-none"
+                >
+                    <svg
+                        class="w-full"
+                        viewBox="-0.5 0 25 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            fill="#FFFFFF"
+                            d="M12.7003 17.1099V18.22C12.7003 18.308 12.6829 18.395 12.6492 18.4763C12.6156 18.5576 12.5662 18.6316 12.504 18.6938C12.4418 18.7561 12.3679 18.8052 12.2867 18.8389C12.2054 18.8725 12.1182 18.8899 12.0302 18.8899C11.9423 18.8899 11.8551 18.8725 11.7738 18.8389C11.6925 18.8052 11.6187 18.7561 11.5565 18.6938C11.4943 18.6316 11.4449 18.5576 11.4113 18.4763C11.3776 18.395 11.3602 18.308 11.3602 18.22V17.0801C10.9165 17.0072 10.4917 16.8468 10.1106 16.6082C9.72943 16.3695 9.39958 16.0573 9.14023 15.6899C9.04577 15.57 8.99311 15.4226 8.99023 15.27C8.99148 15.1842 9.00997 15.0995 9.04459 15.021C9.0792 14.9425 9.12927 14.8718 9.19177 14.813C9.25428 14.7542 9.32794 14.7087 9.40842 14.679C9.4889 14.6492 9.57455 14.6359 9.66025 14.6399C9.74504 14.6401 9.82883 14.6582 9.90631 14.6926C9.98379 14.7271 10.0532 14.7773 10.1102 14.8401C10.4326 15.2576 10.8657 15.5763 11.3602 15.76V13.21C10.0302 12.69 9.36023 11.9099 9.36023 10.8999C9.38027 10.3592 9.5928 9.84343 9.9595 9.44556C10.3262 9.04769 10.8229 8.79397 11.3602 8.72998V7.62988C11.3602 7.5419 11.3776 7.45482 11.4113 7.37354C11.4449 7.29225 11.4943 7.21847 11.5565 7.15625C11.6187 7.09403 11.6925 7.04466 11.7738 7.01099C11.8551 6.97732 11.9423 6.95996 12.0302 6.95996C12.1182 6.95996 12.2054 6.97732 12.2867 7.01099C12.3679 7.04466 12.4418 7.09403 12.504 7.15625C12.5662 7.21847 12.6156 7.29225 12.6492 7.37354C12.6829 7.45482 12.7003 7.5419 12.7003 7.62988V8.71997C13.0724 8.77828 13.4289 8.91103 13.7485 9.11035C14.0681 9.30967 14.3442 9.57137 14.5602 9.87988C14.6555 9.99235 14.7117 10.1329 14.7202 10.28C14.7229 10.3662 14.7084 10.4519 14.6776 10.5325C14.6467 10.613 14.6002 10.6867 14.5406 10.749C14.481 10.8114 14.4096 10.8613 14.3306 10.8958C14.2516 10.9303 14.1665 10.9487 14.0802 10.95C13.99 10.9475 13.9013 10.9257 13.8202 10.886C13.7391 10.8463 13.6675 10.7897 13.6102 10.72C13.3718 10.4221 13.0575 10.1942 12.7003 10.0601V12.3101L12.9503 12.4099C14.2203 12.9099 15.0103 13.63 15.0103 14.77C14.9954 15.3808 14.7481 15.9629 14.3189 16.3977C13.8897 16.8325 13.3108 17.0871 12.7003 17.1099ZM11.3602 11.73V10.0999C11.1988 10.1584 11.0599 10.2662 10.963 10.408C10.8662 10.5497 10.8162 10.7183 10.8203 10.8899C10.8173 11.0676 10.8669 11.2424 10.963 11.3918C11.0591 11.5413 11.1973 11.6589 11.3602 11.73ZM13.5502 14.8C13.5502 14.32 13.2203 14.03 12.7003 13.8V15.8C12.9387 15.7639 13.1561 15.6427 13.3123 15.459C13.4685 15.2752 13.553 15.0412 13.5502 14.8Z"
+                        />
+                        <path
+                            d="M18 3.96997H6C4.93913 3.96997 3.92172 4.39146 3.17157 5.1416C2.42142 5.89175 2 6.9091 2 7.96997V17.97C2 19.0308 2.42142 20.0482 3.17157 20.7983C3.92172 21.5485 4.93913 21.97 6 21.97H18C19.0609 21.97 20.0783 21.5485 20.8284 20.7983C21.5786 20.0482 22 19.0308 22 17.97V7.96997C22 6.9091 21.5786 5.89175 20.8284 5.1416C20.0783 4.39146 19.0609 3.96997 18 3.96997Z"
+                            stroke="#FFFFFF"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </div>
+                <div
+                    class="flex flex-col gap-y-5 2xl:ml-10 2xl:my-2 xl:ml-10 xl:my-2"
+                >
+                    <h1
+                        class="text-2xl text-center font-semibold 2xl:text-4xl 2xl:text-left 2xl:w-fit xl:text-3xl xl:text-left xl:w-fit"
+                    >
+                        Harga Bersaing
+                    </h1>
+                    <h1
+                        class="text-center text-xl 2xl:text-left 2xl:text-2xl 2xl:w-[18rem] xl:text-left xl:text-xl xl:w-[18rem]"
+                    >
+                        Harga yang ditawarkan Anindya Batik sangat bersaing
+                        dengan value yang dimiliki dibanding dengan kompetitor
+                        di kelas harganya
+                    </h1>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col gap-y-10 col-span-3 w-fit 2xl:flex 2xl:justify-center 2xl:w-3/4 2xl:mx-auto 2xl:flex-row 2xl:gap-x-20 xl:flex xl:justify-center xl:w-3/4 xl:mx-auto xl:flex-row xl:gap-x-20"
+            >
+                <div
+                    class="flex flex-col items-center gap-y-2 w-fit 2xl:items-start 2xl:flex-row 2xl:flex xl:items-start xl:flex-row xl:flex"
+                >
+                    <div
+                        class="w-[3rem] rounded-xl bg-gray-500 p-2 2xl:w-[5rem] 2xl:rounded-none xl:w-[3.5rem] xl:rounded-none"
+                    >
+                        <svg
+                            fill="#000000"
+                            class="w-full"
+                            version="1.1"
+                            id="Layer_1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512"
+                            xml:space="preserve"
+                        >
+                            <path
+                                fill="#FFFFFF"
+                                d="M509.068,297.435C436.242,191.1,418.305,97.874,413.199,85.966c-7.935-18.513-26.076-30.476-46.218-30.476h-78.462
+                                                            			c-9.257,0-16.761,7.504-16.761,16.761c0,8.962-6.882,16.218-15.758,16.732c-8.874-0.514-15.758-7.772-15.758-16.732
+                                                            			c0-9.257-7.505-16.761-16.761-16.761h-78.462c-20.142,0-38.283,11.963-46.217,30.476c-0.263,0.613-0.489,1.241-0.677,1.883
+                                                            			C87.044,125.608,66.049,205.277,2.933,297.435c-4.836,7.061-3.576,16.63,2.923,22.198c20.568,17.623,53.229,35.346,84.897,40.375
+                                                            			c-5.16,13.696-10.719,27.252-16.676,40.656c-3.857,8.679,0.268,18.839,9.091,22.37c55.202,22.081,113.338,33.343,172.869,33.476
+                                                            			c59.456-0.133,117.592-11.395,172.796-33.476c8.82-3.529,12.95-13.686,9.091-22.37c-5.957-13.403-11.517-26.961-16.677-40.657
+                                                            			c31.667-5.031,64.331-22.753,84.898-40.374C512.643,314.066,513.903,304.496,509.068,297.435z M409.886,327.629
+                                                            			c-16.162-49.595-27.202-100.825-32.937-153.068c-1.01-9.202-9.279-15.84-18.49-14.832c-9.201,1.01-15.843,9.289-14.831,18.49
+                                                            			c8.325,75.854,27.543,150.152,56.64,219.775c-46.399,16.484-94.854,24.886-144.231,24.996
+                                                            			c-49.444-0.111-97.906-8.512-144.306-24.996c29.04-69.487,48.3-143.774,56.64-219.775c1.009-9.202-5.632-17.48-14.832-18.49
+                                                            			c-9.188-1.002-17.48,5.632-18.49,14.832c-5.732,52.242-16.772,103.471-32.934,153.067c-20.178-1.764-44.329-12.173-62.653-24.53
+                                                            			c54.784-84.081,75.518-153.637,90.498-204.684c2.8-5.739,8.623-9.402,15.059-9.402h64.517c6.671,19.124,24.495,32.869,45.971,33.5
+                                                            			c0.328,0.009,0.657,0.009,0.986,0c21.475-0.631,39.3-14.375,45.97-33.5h64.517c6.436,0,12.259,3.664,15.06,9.403
+                                                            			c18.879,64.332,39.847,126.944,90.498,204.683C454.214,315.453,430.061,325.866,409.886,327.629z"
+                            />
+                        </svg>
+                    </div>
+                    <div
+                        class="flex flex-col gap-y-5 2xl:ml-10 2xl:my-2 xl:ml-10 xl:my-2"
+                    >
+                        <h1
+                            class="text-2xl text-center font-semibold 2xl:w-fit 2xl:text-4xl 2xl:text-left xl:w-fit xl:text-3xl xl:text-left"
+                        >
+                            Desain Unik
+                        </h1>
+                        <h1
+                            class="text-center text-xl 2xl:text-left 2xl:text-2xl 2xl:w-[18rem] xl:text-left xl:text-xl xl:w-[18rem]"
+                        >
+                            Anindya Batik memiliki motif batik eksklusif dan
+                            original, serta menyediakan desain jahitan yang unik
+                        </h1>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col items-center gap-y-2 w-fit 2xl:items-start 2xl:flex-row 2xl:flex xl:items-start xl:flex-row xl:flex"
+                >
+                    <div
+                        class="w-[3rem] rounded-xl bg-gray-500 p-2 2xl:w-[5rem] 2xl:rounded-none xl:w-[3.5rem] xl:rounded-none"
+                    >
+                        <svg
+                            fill="#000000"
+                            class="w-full"
+                            viewBox="0 0 32 32"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <title>ear-slash</title>
+                            <path
+                                fill="#FFFFFF"
+                                d="M20.42 23.91c-0.077-0.030-0.167-0.047-0.26-0.047-0.322 0-0.596 0.203-0.701 0.489l-0.002 0.005-0.092 0.277c-0.090 0.299-0.153 0.648-0.177 1.007l-0.001 0.015c-0.016 0.257-0.056 0.496-0.119 0.726l0.006-0.025c-0.091 0.311-0.195 0.576-0.318 0.829l0.014-0.031c-0.252 0.485-0.574 0.897-0.96 1.24l-0.004 0.004c-0.805 0.687-1.821 1.149-2.938 1.279l-0.026 0.002c-0.25 0.034-0.538 0.054-0.831 0.054-0.894 0-1.745-0.181-2.52-0.509l0.042 0.016c-1.001-0.418-1.802-1.151-2.296-2.073l-0.012-0.024c-0.3-0.609-0.476-1.326-0.476-2.084 0-0.021 0-0.042 0-0.064l-0 0.003c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0c-0 0.017-0 0.038-0 0.058 0 1.004 0.234 1.953 0.652 2.795l-0.016-0.037c0.667 1.262 1.727 2.242 3.015 2.79l0.040 0.015c0.889 0.389 1.926 0.615 3.015 0.615 0.011 0 0.022-0 0.032-0h-0.002c0.001 0 0.003 0 0.004 0 0.368 0 0.73-0.024 1.086-0.071l-0.042 0.005c1.457-0.168 2.75-0.763 3.778-1.656l-0.009 0.007c0.528-0.47 0.965-1.029 1.29-1.656l0.015-0.032c0.144-0.288 0.28-0.629 0.386-0.983l0.012-0.047c0.088-0.294 0.15-0.636 0.173-0.988l0.001-0.014c0.017-0.264 0.058-0.51 0.123-0.747l-0.006 0.026 0.070-0.209c0.029-0.076 0.045-0.164 0.045-0.256 0-0.322-0.202-0.597-0.487-0.705l-0.005-0.002zM14.75 21c0.003-0.59 0.183-1.137 0.49-1.592l-0.007 0.010c0.080-0.117 0.127-0.262 0.127-0.418 0-0.414-0.336-0.75-0.75-0.75-0.258 0-0.486 0.131-0.621 0.33l-0.002 0.003c-0.459 0.68-0.733 1.516-0.737 2.417v0.001c0 2.34-2.5 2.34-2.5 0 0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0c-0.011 0.093-0.017 0.2-0.017 0.309 0 1.552 1.225 2.819 2.761 2.886l0.006 0c1.542-0.067 2.767-1.334 2.767-2.886 0-0.109-0.006-0.216-0.018-0.322l0.001 0.013zM30.531 29.469l-7.91-7.909c0.234-0.302 0.475-0.571 0.732-0.822l0.002-0.002c0.25-0.25 0.5-0.5 0.729-0.777 1.165-1.418 2.019-3.136 2.431-5.019l0.015-0.079c0.145-0.729 0.228-1.567 0.228-2.425 0-0.153-0.003-0.305-0.008-0.457l0.001 0.022c0-6.951-4.492-10.078-8.338-10.645-0.435-0.070-0.936-0.11-1.447-0.11-3.94 0-7.321 2.39-8.774 5.8l-0.024 0.062-5.638-5.637c-0.135-0.131-0.32-0.212-0.523-0.212-0.414 0-0.75 0.336-0.75 0.75 0 0.203 0.081 0.388 0.213 0.523l27.999 28.001c0.136 0.136 0.324 0.22 0.531 0.22 0.415 0 0.751-0.336 0.751-0.751 0-0.207-0.084-0.395-0.22-0.531v0zM18.193 2.839c3.256 0.479 7.057 3.166 7.057 9.161 0.005 0.122 0.007 0.265 0.007 0.409 0 0.756-0.071 1.496-0.206 2.213l0.012-0.074c-0.373 1.716-1.119 3.218-2.151 4.476l0.015-0.018c-0.197 0.238-0.416 0.455-0.631 0.67-0.251 0.252-0.502 0.522-0.742 0.816l-3.009-3.009c0.692-0.858 1.11-1.961 1.11-3.162 0-1.093-0.347-2.105-0.936-2.932l0.011 0.015c-0.863-1.159-2.229-1.901-3.769-1.901-0.862 0-1.67 0.233-2.364 0.639l0.022-0.012c0.433-2.072 2.245-3.606 4.415-3.606 0.057 0 0.114 0.001 0.171 0.003l-0.008-0c2.512 0.207 4.472 2.297 4.472 4.844 0 0.222-0.015 0.441-0.044 0.655l0.003-0.025c0 0.414 0.336 0.75 0.75 0.75s0.75-0.336 0.75-0.75v0c0.020-0.191 0.032-0.414 0.032-0.638 0-3.348-2.592-6.092-5.879-6.333l-0.021-0.001c-0.054-0.002-0.118-0.003-0.183-0.003-2.981 0-5.457 2.158-5.954 4.996l-0.005 0.036-1.805-1.804c1.102-3.228 4.109-5.508 7.648-5.508 0.435 0 0.861 0.034 1.277 0.101l-0.046-0.006zM12.84 11.779c0.521-0.439 1.185-0.722 1.914-0.771l0.010-0.001c0.028-0.001 0.060-0.001 0.093-0.001 1.081 0 2.045 0.505 2.668 1.292l0.005 0.007c0.384 0.556 0.614 1.244 0.614 1.986 0 0.79-0.26 1.519-0.7 2.107l0.007-0.009z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <div
+                        class="flex flex-col gap-y-5 2xl:ml-10 2xl:my-2 xl:ml-10 xl:my-2"
+                    >
+                        <h1
+                            class="text-xl text-center font-semibold 2xl:w-fit 2xl:text-4xl 2xl:text-left xl:w-fit xl:text-xl xl:text-left"
+                        >
+                            Ramah Difabel
+                        </h1>
+                        <h1
+                            class="text-center text-xl 2xl:text-left 2xl:text-2xl 2xl:w-[18rem] xl:text-left xl:text-xl xl:w-[18rem]"
+                        >
+                            Anindya Batik memberdayakan teman teman difabel
+                            dengan memberikan mereka kesempatan untuk berkreasi
+                            melalui batik
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-14 outline outline-1 bg-gray-300 2xl:my-32">
+            <div
+                class="container mx-auto flex items-center justify-start p-5 xl:py-8 2xl:py-12 2xl:px-0"
+            >
+                <h1
+                    class="text-2xl 2xl:text-5xl xl:text-4xl font-semibold w-[65%]"
+                >
+                    Ingin bekerja sama dengan kami?
+                </h1>
+
+                <a
+                    class="p-3 ml-auto bg-black hover:scale-[1.05]"
+                    href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0"
+                >
+                    <h1
+                        class="text-sm 2xl:text-2xl xl:text-xl font-semibold text-white"
+                    >
+                        Hubungi Kami
+                    </h1>
+                </a>
+            </div>
+        </div>
+
+        <div id="pameran"></div>
+
+        <div
+            class="hidden sm:mt-14 sm:block md:block lg:block xl:block 2xl:block"
+        >
+            <h1
+                class="2xl:mt-20 2xl:mb-14 2xl:flex 2xl:justify-center 2xl:text-5xl 2xl:font-semibold xl:text-5xl xl:mt-20 xl:mb-14 xl:flex xl:justify-center xl:font-semibold"
+            >
+                Tanggal Pameran
+            </h1>
+            <div class="2xl:h-full 2xl:w-full xl:h-full xl:w-full">
+                <div
+                    class="container mx-auto 2xl:flex 2xl:gap-x-10 xl:flex xl:gap-x-10"
+                >
+                    <div
+                        class="2xl:flex 2xl:w-1/2 2xl:items-center 2xl:justify-center xl:flex xl:items-center xl:justify-center xl:w-[50%]"
+                    >
+                        <img
+                            src="public/img/Logo.png"
+                            alt="Logo"
+                            class="2xl:h-32 2xl:w-96 xl:w-72 xl:h-28"
+                        />
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute inset-y-0 w-1 bg-black"></div>
+                        <div class="relative 2xl:my-12 xl:my-6">
+                            <div
+                                class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"
+                            ></div>
+                            <h1
+                                class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-lg text-gray-700"
+                            >
+                                15 Mei 2024 - 16 Mei 2024
+                            </h1>
+                            <h1
+                                class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-xl font-bold"
+                            >
+                                Dekranas Expo 2024
+                            </h1>
+                            <h1
+                                class="2xl:ml-8 2xl:mt-2 xl:mt-2 xl:ml-8 xl:text-lg 2xl:text-2xl"
+                            >
+                                Dalam rangka HUT Dekranas ke 44, Pemkot
+                                Surakarta bekerja sama dengan Dewan Kerajinan
+                                Nasional mengadakan expo dengan menampilkan
+                                berbagai produk dari UMKM.
+                            </h1>
+                        </div>
+                        <div class="relative 2xl:my-12 xl:my-6">
+                            <div class="relative">
+                                <div
+                                    class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"
+                                ></div>
+                                <h1
+                                    class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-lg text-gray-700"
+                                >
+                                    27 Juni 2024 - 29 Juni 2024
+                                </h1>
+                                <h1
+                                    class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-xl font-bold"
+                                >
+                                    Hari Keluarga Nasional
+                                </h1>
+                                <h1
+                                    class="2xl:ml-8 2xl:mt-2 xl:mt-2 xl:ml-8 xl:text-lg 2xl:text-2xl"
+                                >
+                                    Pameran UMKM pada Hari Keluarga Nasional
+                                    (Harganas) ke-31 Tahun 2024 diselenggarakan
+                                    oleh Badan Kependudukan dan Keluarga
+                                    Berencana Nasional (BKKBN) di Lapangan
+                                    Simpang Lima Semarang.
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="relative 2xl:my-12 xl:my-6">
+                            <div class="relative">
+                                <div
+                                    class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"
+                                ></div>
+                                <h1
+                                    class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-lg text-gray-700"
+                                >
+                                    2 Juli 2024 - 8 Juli 2024
+                                </h1>
+                                <h1
+                                    class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-xl font-bold"
+                                >
+                                    Jogja Holiday Sale
+                                </h1>
+                                <h1
+                                    class="2xl:ml-8 2xl:mt-2 xl:ml-8 xl:mt-2 xl:text-lg 2xl:text-2xl"
+                                >
+                                    Jogja Holiday Sale di Atrium Plaza
+                                    Ambarrukmo yang terdiri lebih dari 50+
+                                    Tenant mulai dari Batik, Fashion, Hijab,
+                                    Craft, Jewelry & Lifestyle.
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="relative 2xl:my-12 xl:my-6">
+                            <div class="relative">
+                                <div
+                                    class="absolute -left-2 top-2 h-5 w-5 rounded-full bg-black"
+                                ></div>
+                                <h1
+                                    class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-lg text-gray-700"
+                                >
+                                    31 Juli 2024 - 4 Agustus 2024
+                                </h1>
+                                <h1
+                                    class="2xl:ml-8 2xl:text-2xl xl:ml-8 xl:text-xl font-bold"
+                                >
+                                    Pasar Raya Magelang
+                                </h1>
+                                <h1
+                                    class="2xl:ml-8 2xl:mt-2 xl:mt-2 xl:ml-8 xl:text-lg 2xl:text-2xl"
+                                >
+                                    Pesta Rakyat Terbesar di Kota Magelang yang
+                                    terdiri dari Pameran UMKM, Festival Balon
+                                    Udara Magelang, Festival Nasi Goreng
+                                    Magelangan, dan berbagai acara lainnya.
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sm:hidden">
+            <div class="block sm:hidden">
+                <h1 class="mt-10 font-semibold text-3xl text-center">
+                    Tanggal Pameran
+                </h1>
+                <div
+                    class="mt-10 flex h-fit w-full items-center justify-center px-4"
+                >
+                    <div class="mx-auto grid w-full max-w-7xl grid-cols-9">
+                        <div class="col-span-4 h-full w-full">
+                            <div
+                                class="h-full w-full rounded-md bg-abu p-3 md:pl-4"
+                            >
+                                <h1 class="pt-2 text-sm text-gray-800">
+                                    15 Mei 2024 - 16 Mei 2024
+                                </h1>
+                                <h1 class="text-xl font-medium">
+                                    Dekranas Expo 2024
+                                </h1>
+                                <!-- <p class="text-xs sm:text-sm">
+                                    Dalam rangka HUT Dekranas ke 44, Pemkot
+                                    Surakarta bekerja sama dengan Dewan
+                                    Kerajinan Nasional mengadakan expo dengan
+                                    menampilkan berbagai produk dari UMKM.
+                                </p> -->
+                            </div>
+                        </div>
+                        <div
+                            class="relative col-span-1 flex h-full w-full items-center justify-center"
+                        >
+                            <div class="h-full w-1 bg-black"></div>
+                            <div
+                                class="absolute z-10 h-6 w-6 rounded-full bg-gray-800 text-center text-white"
+                            >
+                                1
+                            </div>
+                        </div>
+                        <div class="col-span-4 h-full w-full"></div>
+
+                        <!-- Stack 2 -->
+                        <div class="col-span-4 h-full w-full"></div>
+                        <div
+                            class="relative col-span-1 flex h-full w-full items-center justify-center"
+                        >
+                            <div class="h-full w-1 bg-black"></div>
+                            <div
+                                class="absolute z-10 h-6 w-6 rounded-full bg-gray-800 text-center text-white"
+                            >
+                                2
+                            </div>
+                        </div>
+                        <div class="col-span-4 h-full w-full">
+                            <div
+                                class="h-full w-full rounded-md bg-abu p-3 md:pl-4"
+                            >
+                                <h1 class="pt-2 text-sm text-gray-800">
+                                    27 Juni 2024 - 29 Juni 2024
+                                </h1>
+                                <h1 class="pb-1 text-xl font-medium">
+                                    Hari Keluarga Nasional
+                                </h1>
+                                <!-- <p class="text-xs sm:text-sm">
+                                    Pameran UMKM pada Hari Keluarga Nasional
+                                    (Harganas) ke-31 Tahun 2024 diselenggarakan
+                                    oleh Badan Kependudukan dan Keluarga
+                                    Berencana Nasional (BKKBN) di Lapangan
+                                    Simpang Lima Semarang.
+                                </p> -->
+                            </div>
+                        </div>
+
+                        <!-- Stack 3 -->
+                        <div class="col-span-4 h-full w-full">
+                            <div
+                                class="h-full w-full rounded-md bg-abu p-3 md:pl-4"
+                            >
+                                <h1 class="pt-2 text-sm text-gray-800">
+                                    2 Juli 2024 - 8 Juli 2024
+                                </h1>
+                                <h1 class="pb-1 text-xl font-medium">
+                                    Jogja Holiday Sale
+                                </h1>
+                                <!-- <p class="text-xs sm:text-sm">
+                                    Jogja Holiday Sale di Atrium Plaza
+                                    Ambarrukmo yang terdiri lebih dari 50+
+                                    Tenant mulai dari Batik, Fashion, Hijab,
+                                    Craft, Jewelry & Lifestyle.
+                                </p> -->
+                            </div>
+                        </div>
+                        <div
+                            class="relative col-span-1 flex h-full w-full items-center justify-center"
+                        >
+                            <div class="h-full w-1 bg-black"></div>
+                            <div
+                                class="absolute z-10 h-6 w-6 rounded-full bg-gray-800 text-center text-white"
+                            >
+                                3
+                            </div>
+                        </div>
+                        <div class="col-span-4 h-full w-full"></div>
+
+                        <div class="col-span-4 h-full w-full"></div>
+                        <div
+                            class="relative col-span-1 flex h-full w-full items-center justify-center"
+                        >
+                            <div class="h-full w-1 bg-black"></div>
+                            <div
+                                class="absolute z-10 h-6 w-6 rounded-full bg-gray-800 text-center text-white"
+                            >
+                                4
+                            </div>
+                        </div>
+                        <div class="col-span-4 h-full w-full">
+                            <div
+                                class="h-full w-full rounded-md bg-abu p-3 md:pl-4"
+                            >
+                                <h1 class="pt-2 text-sm text-gray-800">
+                                    31 Juli 2024 - 4 Agustus 2024
+                                </h1>
+                                <h1 class="pb-1 text-xl font-medium">
+                                    Pasar Raya Magelang
+                                </h1>
+                                <!-- <p class="text-xs sm:text-sm">
+                                    Pesta Rakyat Terbesar di Kota Magelang yang
+                                    terdiri dari Pameran UMKM, Festival Balon
+                                    Udara Magelang, Festival Nasi Goreng
+                                    Magelangan, dan berbagai acara lainnya.
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="mt-6 mx-auto container flex flex-col gap-y-2 p-3 2xl:my-32 2xl:flex 2xl:gap-x-20 xl:my-32 xl:flex xl:flex-row xl:gap-x-10"
+        >
+            <div
+                class="flex flex-col 2xl:gap-y-0 2xl:w-fit 2xl:h-fit xl:gap-y-0 xl:w-fit xl:h-fit"
+            >
+                <h1
+                    class="text-3xl font-semibold 2xl:text-5xl 2xl:w-fit xl:text-4xl"
+                >
+                    Tentang Kami
+                </h1>
+                <h1
+                    class="text-lg mt-1 2xl:text-2xl 2xl:w-[45rem] xl:mt-3 xl:text-xl xl:w-[35rem]"
+                >
+                    Batifabel (Batik Difabel) hadir untuk memenuhi kebutuhan
+                    fashion batik dan tenun secara eksklusif. Batifabel
+                    merupakan platform yang menyediakan berbagai macam model dan
+                    motif batik untuk berbagai usia. Batifabel diproduksi oleh
+                    teman-teman difabel terutama teman bisu tuli yang tergabung
+                    dalam UMKM Anindya Batik Art.
+                </h1>
+                <h1
+                    class="text-lg mt-4 2xl:text-2xl 2xl:w-[45rem] xl:mt-4 xl:text-xl xl:w-[35rem]"
+                >
+                    Anindya Batik Art berdiri sejak tahun 2010 dengan produk
+                    unggulan fashion batik dan tenun. Saat ini, Anindya Batik
+                    Art memiliki 8 orang karyawan tetap pada bagian produksi
+                    yang seluruhnya adalah teman bisu tuli.
+                </h1>
+            </div>
+            <div
+                class="2xl:mt-[4rem] 2xl:ml-auto 2xl:w-[50rem] xl:mt-14 xl:ml-auto xl:w-[37rem] hidden sm:block"
+            >
+                <video
+                    src="public/video/Video Profil Anindya Batik Art.mp4"
+                    controls
+                    muted
+                    loop
+                    class=""
+                ></video>
+            </div>
+        </div>
 
         <div id="faq"></div>
 
-        <div class="mb-20 mt-20 flex w-full justify-center" >
-            <div class="w-3/4 ">
-                <div class="flex mt-20 justify-center">
-                    <h1 class="text-5xl font-semibold">Frequently Asked Questions</h1>
+        <div
+            class="mx-auto mt-10 container flex flex-col items-center w-screen 2xl:mb-32 xl:mb-24"
+        >
+            <h1 class="text-xl 2xl:text-4xl xl:text-3xl font-semibold">
+                Frequently Asked Questions
+            </h1>
+            <div
+                class="w-full px-5 mt-3 flex flex-col divide-y divide-solid divide-black 2xl:w-3/4 2xl:px-0 2xl:mt-10 xl:w-3/4 xl:px-0 xl:mt-10"
+            >
+                <h1></h1>
+
+                <div>
+                    <div
+                        class="pl-2 py-3 flex justify-between items-center hover:bg-gray-300 hover:duration-100 active:bg-gray-300 cursor-pointer"
+                        onclick="toggleAccordion(1)"
+                    >
+                        <h1
+                            class="font-semibold text-lg 2xl:text-2xl xl:text-xl"
+                        >
+                            PRODUK
+                        </h1>
+                        <span class="text-2xl pr-2 cursor-pointer"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="24px"
+                                viewBox="0 -960 960 960"
+                                width="24px"
+                                fill="#000000"
+                            >
+                                <path
+                                    d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"
+                                /></svg
+                        ></span>
+                    </div>
+                    <div id="content-1" class="accordion-content pl-2 pb-3">
+                        <p
+                            class="text-[0.9rem] 2xl:text-xl xl:text-xl font-semibold"
+                        >
+                            Q : Apakah Pelanggan bisa mengajukan desain sendiri?
+                        </p>
+                        <p class="text-[0.9rem] 2xl:text-xl xl:text-xl mt-2">
+                            A : Pelanggan bisa mengajukan desain yang mereka
+                            inginkan untuk batik yang akan dipesan
+                        </p>
+                    </div>
                 </div>
-                    <div class="mt-10 divide-y divide-solid divide-black">
-                    <h1></h1>
-                    <div>
-                        <div
-                            class="pl-2 py-3 flex justify-between items-center hover:bg-gray-300 hover:duration-100 active:bg-gray-300 cursor-pointer" onclick="toggleAccordion(1)"
+
+                <div>
+                    <div
+                        class="pl-2 py-3 flex justify-between items-center hover:bg-gray-300 hover:duration-100 cursor-pointer"
+                        onclick="toggleAccordion(2)"
+                    >
+                        <h1
+                            class="font-semibold text-lg 2xl:text-2xl xl:text-xl"
                         >
-                            <h1 class="font-semibold text-3xl">
-                                PRODUK
-                            </h1>
-                            <span
-                                class="text-2xl pr-2 cursor-pointer"
-                                ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span
+                            DESIGN
+                        </h1>
+                        <span class="text-2xl pr-2 cursor-pointer"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="24px"
+                                viewBox="0 -960 960 960"
+                                width="24px"
+                                fill="#000000"
                             >
-                        </div>
-                        <div id="content-1" class="accordion-content pl-2 pb-3">
-                            <p class="text-2xl font-semibold">
-                                Q : Apakah Pelanggan bisa mengajukan desain sendiri?
-                            </p>
-                            <p class="text-2xl mt-3">
-                                A : Pelanggan bisa mengajukan desain yang mereka inginkan untuk batik yang akan dipesan
-                            </p>
-                        </div>
+                                <path
+                                    d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"
+                                /></svg
+                        ></span>
                     </div>
-                    <div>
-                        <div
-                            class="pl-2 py-3 flex justify-between items-cent
-                            er hover:bg-gray-300 hover:duration-100 cursor-pointer" onclick="toggleAccordion(2)"
+                    <div id="content-2" class="accordion-content pl-2 pb-3">
+                        <p
+                            class="text-[0.9rem] 2xl:text-xl xl:text-xl font-semibold"
                         >
-                            <h1 class="font-semibold text-3xl">
-                                DESIGN
-                            </h1>
-                            <span
-                                class="text-2xl pr-2 cursor-pointer"
-                                ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span
-                            >
-                        </div>
-                        <div id="content-2" class="accordion-content pl-2 pb-3">
-                            <p class="text-2xl font-semibold">
-                                Q : Apakah bisa memesan Batik dengan jumlah besar untuk seragam?
-                            </p>
-                            <p class="text-2xl mt-3">
-                                A : Anindya Batik siap menerima pemesanan seragam dalam jumlah besar
-                            </p>
-                        </div>
+                            Q : Apakah bisa memesan Batik dengan jumlah besar
+                            untuk seragam?
+                        </p>
+                        <p class="text-[0.9rem] 2xl:text-xl xl:text-xl mt-2">
+                            A : Anindya Batik siap menerima pemesanan seragam
+                            dalam jumlah besar
+                        </p>
                     </div>
-                    <div>
-                        <div
-                            class="pl-2 py-3 flex justify-between items-center hover:bg-gray-300 hover:duration-100 cursor-pointer" onclick="toggleAccordion(3)""
-                        >
-                            <h1 class="font-semibold text-3xl">
-                                PEMESANAN
-                            </h1>
-                            <span
-                                class="text-2xl pr-2 cursor-pointer"
-                                ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></span
-                            >
-                        </div>
-                        <div id="content-3" class="accordion-content pl-2 pb-3">
-                            <p class="text-2xl font-semibold">
-                                Q : Berapa lama waktu proses pengerjaan pesanan pada Anindya Batik?
-                            </p>
-                            <p class="text-2xl mt-5">
-                                A : waktu pengerjaan bergantung pada banyaknya jumlah pesanan dan juga kerumitan desain pesanan. Umumnya Anindya Batik bisa mengerjakan 5 buah baju perminggunya.
-                            </p>
-                            <p class="text-2xl font-semibold mt-8">
-                                Q : Apakah produk Anindya Batik tersedia di e-commerce seperti shopee dan tokopedia?
-                            </p>
-                            <p class="text-2xl mt-5">
-                                A : Untuk saat ini Anindya Batik melayani pemesanan Online hanya melalui WhatsApp.
-                            </p>
-                            <p class="text-2xl font-semibold mt-8">
-                                Q : sistem pembayaran apakah yang digunakan oleh Anindya Batik?
-                            </p>
-                            <p class="text-2xl mt-5">
-                                A : Pembayaran pesanan dapat dilakukan dengan Transfer Bank BCA, Bank BRI, dan juga menggunakan QRIS.
-                            </p>
-                        </div>
-                    </div>
-                    <h1></h1>
                 </div>
+                <div>
+                    <div
+                        class="pl-2 py-3 flex justify-between items-center hover:bg-gray-300 hover:duration-100 cursor-pointer"
+                        onclick="toggleAccordion(3)"
+                    >
+                        <h1
+                            class="font-semibold text-lg 2xl:text-2xl xl:text-xl"
+                        >
+                            PEMESANAN
+                        </h1>
+                        <span class="text-2xl pr-2 cursor-pointer"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="24px"
+                                viewBox="0 -960 960 960"
+                                width="24px"
+                                fill="#000000"
+                            >
+                                <path
+                                    d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"
+                                /></svg
+                        ></span>
+                    </div>
+                    <div id="content-3" class="accordion-content pl-2 pb-3">
+                        <p
+                            class="text-[0.9rem] 2xl:text-xl xl:text-xl font-semibold"
+                        >
+                            Q : Berapa lama waktu proses pengerjaan pesanan pada
+                            Anindya Batik?
+                        </p>
+                        <p class="text-[0.9rem] 2xl:text-xl xl:text-xl mt-2">
+                            A : Waktu pengerjaan bergantung pada banyaknya
+                            jumlah pesanan dan juga kerumitan desain pesanan.
+                            Umumnya Anindya Batik bisa mengerjakan 5 buah baju
+                            perminggunya.
+                        </p>
+                        <p
+                            class="text-[0.9rem] 2xl:text-xl xl:text-xl font-semibold mt-5"
+                        >
+                            Q : Apakah produk Anindya Batik tersedia di
+                            e-commerce seperti shopee dan tokopedia?
+                        </p>
+                        <p class="text-[0.9rem] 2xl:text-xl xl:text-xl mt-2">
+                            A : Untuk saat ini Anindya Batik melayani pemesanan
+                            Online hanya melalui WhatsApp.
+                        </p>
+                        <p
+                            class="text-[0.9rem] 2xl:text-xl xl:text-xl font-semibold mt-5"
+                        >
+                            Q : sistem pembayaran apakah yang digunakan oleh
+                            Anindya Batik?
+                        </p>
+                        <p class="text-[0.9rem] 2xl:text-xl xl:text-xl mt-2">
+                            A : Pembayaran pesanan dapat dilakukan dengan
+                            Transfer Bank BCA, Bank BRI, dan juga menggunakan
+                            QRIS.
+                        </p>
+                    </div>
+                </div>
+                <h1></h1>
             </div>
         </div>
 
-
-        <div class="h-full w-full mt-20 outline outline-1">
-            <div class="container h-full w-full mx-auto flex justify-end pb-3 pt-8 pl-8 pr-8">
-                <div class="">
-                    <a href="index.html"><img src="public/img/Logo.png" class="h-14" /></a>
-                    <h1 class="text-sm mt-5 mb-3 w-[30rem]">Penyedia berbagai macam model dan motif batik untuk berbagai usia yang diproduksi oleh teman-teman difabel bisu tuli yang tergabung dalam UMKM Anindya Batik Art.</h1>
+        <div class="outline outline-1">
+            <div
+                class="mx-auto container p-3 2xl:py-5 2xl:px-0 xl:py-5 xl:px-0 mt-10 2xl:flex-row xl:flex-row 2xl:items-start xl:items-start flex flex-col gap-y-2"
+            >
+                <div
+                    class="2xl:flex 2xl:flex-col 2xl:gap-y-4 xl:flex xl:flex-col xl:gap-y-4"
+                >
+                    <a href="index.html">
+                        <img
+                            src="public/img/Logo.png"
+                            class="max-w-[30%] 2xl:max-w-[20%] xl:max-w-[20%]"
+                        />
+                    </a>
+                    <h1
+                        class="text-[0.8rem] max-w-[90%] 2xl:text-sm 2xl:max-w-[35%] xl:text-[0.7rem] xl:max-w-[60%]"
+                    >
+                        Penyedia berbagai macam model dan motif batik untuk
+                        berbagai usia yang diproduksi oleh teman teman difabel
+                        bisu tuli yang tergabung dalam UMKM anindya Batik Art
+                    </h1>
                 </div>
-                <div class="mt-5 w-fit h-fit ml-auto">
-                    <div class="flex gap-x-8">
-                        <a href="#pameran"><h1 class="text-lg">Pameran</h1></a>
-                        <a href="pilihan.html"><h1 class="text-lg">Model</h1></a>
-                        <a href="#faq"><h1 class="text-lg">FAQ</h1></a>
-                        <a href="lokasi.html"><h1 class="text-lg">Lokasi</h1></a>
+                <div
+                    class="2xl:ml-auto xl:ml-auto flex 2xl:flex xl:flex 2xl:flex-col xl:flex-col 2xl:gap-y-14 xl:gap-y-12"
+                >
+                    <div class="2xl:flex 2xl:gap-x-14 xl:flex xl:gap-x-10">
+                        <a href="index.html#pameran">
+                            <h1 class="text-sm 2xl:text-xl xl:text-md">
+                                Pameran
+                            </h1>
+                        </a>
+                        <a href="model.html">
+                            <h1 class="text-sm 2xl:text-xl xl:text-md">
+                                Model
+                            </h1>
+                        </a>
+                        <a href="index.html#faq">
+                            <h1 class="text-sm 2xl:text-xl xl:text-md">FAQ</h1>
+                        </a>
+                        <a href="lokasi.html">
+                            <h1 class="text-sm 2xl:text-xl xl:text-md">
+                                Lokasi
+                            </h1>
+                        </a>
                     </div>
-                    <div class="flex justify-end gap-x-6 mt-9">
-                        <a href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0">
-                            <div class="p-2 rounded-full outline outline-1 h-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" class="" height="25" class=" h-full" viewBox="0 0 50 50">
-                                <path d="M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 29.079097 3.1186875 32.88588 4.984375 36.208984 L 2.0371094 46.730469 A 1.0001 1.0001 0 0 0 3.2402344 47.970703 L 14.210938 45.251953 C 17.434629 46.972929 21.092591 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 21.278025 46 17.792121 45.029635 14.761719 43.333984 A 1.0001 1.0001 0 0 0 14.033203 43.236328 L 4.4257812 45.617188 L 7.0019531 36.425781 A 1.0001 1.0001 0 0 0 6.9023438 35.646484 C 5.0606869 32.523592 4 28.890107 4 25 C 4 13.390466 13.390466 4 25 4 z M 16.642578 13 C 16.001539 13 15.086045 13.23849 14.333984 14.048828 C 13.882268 14.535548 12 16.369511 12 19.59375 C 12 22.955271 14.331391 25.855848 14.613281 26.228516 L 14.615234 26.228516 L 14.615234 26.230469 C 14.588494 26.195329 14.973031 26.752191 15.486328 27.419922 C 15.999626 28.087653 16.717405 28.96464 17.619141 29.914062 C 19.422612 31.812909 21.958282 34.007419 25.105469 35.349609 C 26.554789 35.966779 27.698179 36.339417 28.564453 36.611328 C 30.169845 37.115426 31.632073 37.038799 32.730469 36.876953 C 33.55263 36.755876 34.456878 36.361114 35.351562 35.794922 C 36.246248 35.22873 37.12309 34.524722 37.509766 33.455078 C 37.786772 32.688244 37.927591 31.979598 37.978516 31.396484 C 38.003976 31.104927 38.007211 30.847602 37.988281 30.609375 C 37.969311 30.371148 37.989581 30.188664 37.767578 29.824219 C 37.302009 29.059804 36.774753 29.039853 36.224609 28.767578 C 35.918939 28.616297 35.048661 28.191329 34.175781 27.775391 C 33.303883 27.35992 32.54892 26.991953 32.083984 26.826172 C 31.790239 26.720488 31.431556 26.568352 30.914062 26.626953 C 30.396569 26.685553 29.88546 27.058933 29.587891 27.5 C 29.305837 27.918069 28.170387 29.258349 27.824219 29.652344 C 27.819619 29.649544 27.849659 29.663383 27.712891 29.595703 C 27.284761 29.383815 26.761157 29.203652 25.986328 28.794922 C 25.2115 28.386192 24.242255 27.782635 23.181641 26.847656 L 23.181641 26.845703 C 21.603029 25.455949 20.497272 23.711106 20.148438 23.125 C 20.171937 23.09704 20.145643 23.130901 20.195312 23.082031 L 20.197266 23.080078 C 20.553781 22.728924 20.869739 22.309521 21.136719 22.001953 C 21.515257 21.565866 21.68231 21.181437 21.863281 20.822266 C 22.223954 20.10644 22.02313 19.318742 21.814453 18.904297 L 21.814453 18.902344 C 21.828863 18.931014 21.701572 18.650157 21.564453 18.326172 C 21.426943 18.001263 21.251663 17.580039 21.064453 17.130859 C 20.690033 16.232501 20.272027 15.224912 20.023438 14.634766 L 20.023438 14.632812 C 19.730591 13.937684 19.334395 13.436908 18.816406 13.195312 C 18.298417 12.953717 17.840778 13.022402 17.822266 13.021484 L 17.820312 13.021484 C 17.450668 13.004432 17.045038 13 16.642578 13 z M 16.642578 15 C 17.028118 15 17.408214 15.004701 17.726562 15.019531 C 18.054056 15.035851 18.033687 15.037192 17.970703 15.007812 C 17.906713 14.977972 17.993533 14.968282 18.179688 15.410156 C 18.423098 15.98801 18.84317 16.999249 19.21875 17.900391 C 19.40654 18.350961 19.582292 18.773816 19.722656 19.105469 C 19.863021 19.437122 19.939077 19.622295 20.027344 19.798828 L 20.027344 19.800781 L 20.029297 19.802734 C 20.115837 19.973483 20.108185 19.864164 20.078125 19.923828 C 19.867096 20.342656 19.838461 20.445493 19.625 20.691406 C 19.29998 21.065838 18.968453 21.483404 18.792969 21.65625 C 18.639439 21.80707 18.36242 22.042032 18.189453 22.501953 C 18.016221 22.962578 18.097073 23.59457 18.375 24.066406 C 18.745032 24.6946 19.964406 26.679307 21.859375 28.347656 C 23.05276 29.399678 24.164563 30.095933 25.052734 30.564453 C 25.940906 31.032973 26.664301 31.306607 26.826172 31.386719 C 27.210549 31.576953 27.630655 31.72467 28.119141 31.666016 C 28.607627 31.607366 29.02878 31.310979 29.296875 31.007812 L 29.298828 31.005859 C 29.655629 30.601347 30.715848 29.390728 31.224609 28.644531 C 31.246169 28.652131 31.239109 28.646231 31.408203 28.707031 L 31.408203 28.708984 L 31.410156 28.708984 C 31.487356 28.736474 32.454286 29.169267 33.316406 29.580078 C 34.178526 29.990889 35.053561 30.417875 35.337891 30.558594 C 35.748225 30.761674 35.942113 30.893881 35.992188 30.894531 C 35.995572 30.982516 35.998992 31.07786 35.986328 31.222656 C 35.951258 31.624292 35.8439 32.180225 35.628906 32.775391 C 35.523582 33.066746 34.975018 33.667661 34.283203 34.105469 C 33.591388 34.543277 32.749338 34.852514 32.4375 34.898438 C 31.499896 35.036591 30.386672 35.087027 29.164062 34.703125 C 28.316336 34.437036 27.259305 34.092596 25.890625 33.509766 C 23.114812 32.325956 20.755591 30.311513 19.070312 28.537109 C 18.227674 27.649908 17.552562 26.824019 17.072266 26.199219 C 16.592866 25.575584 16.383528 25.251054 16.208984 25.021484 L 16.207031 25.019531 C 15.897202 24.609805 14 21.970851 14 19.59375 C 14 17.077989 15.168497 16.091436 15.800781 15.410156 C 16.132721 15.052495 16.495617 15 16.642578 15 z"></path>
-                                </svg>
-                            </div>
-                        </a>
-
-                        <a href="https://www.instagram.com/anindya_batik/">
-                            <div class="p-2 rounded-full outline outline-1 h-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" class="h-full" viewBox="0 0 50 50">
-                                <path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"></path>
-                                </svg>
-                            </div>
-                        </a>
+                    <div class="ml-auto flex flex-col gap-y-2">
+                        <h1 class="text-sm 2xl:text-xl block sm:hidden">
+                            Hubungi Kami
+                        </h1>
+                        <div
+                            class="flex gap-x-4 2xl:flex 2xl:gap-x-6 xl:flex xl:gap-x-6"
+                        >
+                            <a
+                                href="https://api.whatsapp.com/send/?phone=6281392546918&text&type=phone_number&app_absent=0"
+                            >
+                                <div
+                                    class="w-7 h-fit 2xl:w-12 outline outline-1 p-1 2xl:p-2 rounded-full"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        x="0px"
+                                        y="0px"
+                                        class=""
+                                        viewBox="0 0 50 50"
+                                    >
+                                        <path
+                                            d="M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 29.079097 3.1186875 32.88588 4.984375 36.208984 L 2.0371094 46.730469 A 1.0001 1.0001 0 0 0 3.2402344 47.970703 L 14.210938 45.251953 C 17.434629 46.972929 21.092591 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 21.278025 46 17.792121 45.029635 14.761719 43.333984 A 1.0001 1.0001 0 0 0 14.033203 43.236328 L 4.4257812 45.617188 L 7.0019531 36.425781 A 1.0001 1.0001 0 0 0 6.9023438 35.646484 C 5.0606869 32.523592 4 28.890107 4 25 C 4 13.390466 13.390466 4 25 4 z M 16.642578 13 C 16.001539 13 15.086045 13.23849 14.333984 14.048828 C 13.882268 14.535548 12 16.369511 12 19.59375 C 12 22.955271 14.331391 25.855848 14.613281 26.228516 L 14.615234 26.228516 L 14.615234 26.230469 C 14.588494 26.195329 14.973031 26.752191 15.486328 27.419922 C 15.999626 28.087653 16.717405 28.96464 17.619141 29.914062 C 19.422612 31.812909 21.958282 34.007419 25.105469 35.349609 C 26.554789 35.966779 27.698179 36.339417 28.564453 36.611328 C 30.169845 37.115426 31.632073 37.038799 32.730469 36.876953 C 33.55263 36.755876 34.456878 36.361114 35.351562 35.794922 C 36.246248 35.22873 37.12309 34.524722 37.509766 33.455078 C 37.786772 32.688244 37.927591 31.979598 37.978516 31.396484 C 38.003976 31.104927 38.007211 30.847602 37.988281 30.609375 C 37.969311 30.371148 37.989581 30.188664 37.767578 29.824219 C 37.302009 29.059804 36.774753 29.039853 36.224609 28.767578 C 35.918939 28.616297 35.048661 28.191329 34.175781 27.775391 C 33.303883 27.35992 32.54892 26.991953 32.083984 26.826172 C 31.790239 26.720488 31.431556 26.568352 30.914062 26.626953 C 30.396569 26.685553 29.88546 27.058933 29.587891 27.5 C 29.305837 27.918069 28.170387 29.258349 27.824219 29.652344 C 27.819619 29.649544 27.849659 29.663383 27.712891 29.595703 C 27.284761 29.383815 26.761157 29.203652 25.986328 28.794922 C 25.2115 28.386192 24.242255 27.782635 23.181641 26.847656 L 23.181641 26.845703 C 21.603029 25.455949 20.497272 23.711106 20.148438 23.125 C 20.171937 23.09704 20.145643 23.130901 20.195312 23.082031 L 20.197266 23.080078 C 20.553781 22.728924 20.869739 22.309521 21.136719 22.001953 C 21.515257 21.565866 21.68231 21.181437 21.863281 20.822266 C 22.223954 20.10644 22.02313 19.318742 21.814453 18.904297 L 21.814453 18.902344 C 21.828863 18.931014 21.701572 18.650157 21.564453 18.326172 C 21.426943 18.001263 21.251663 17.580039 21.064453 17.130859 C 20.690033 16.232501 20.272027 15.224912 20.023438 14.634766 L 20.023438 14.632812 C 19.730591 13.937684 19.334395 13.436908 18.816406 13.195312 C 18.298417 12.953717 17.840778 13.022402 17.822266 13.021484 L 17.820312 13.021484 C 17.450668 13.004432 17.045038 13 16.642578 13 z M 16.642578 15 C 17.028118 15 17.408214 15.004701 17.726562 15.019531 C 18.054056 15.035851 18.033687 15.037192 17.970703 15.007812 C 17.906713 14.977972 17.993533 14.968282 18.179688 15.410156 C 18.423098 15.98801 18.84317 16.999249 19.21875 17.900391 C 19.40654 18.350961 19.582292 18.773816 19.722656 19.105469 C 19.863021 19.437122 19.939077 19.622295 20.027344 19.798828 L 20.027344 19.800781 L 20.029297 19.802734 C 20.115837 19.973483 20.108185 19.864164 20.078125 19.923828 C 19.867096 20.342656 19.838461 20.445493 19.625 20.691406 C 19.29998 21.065838 18.968453 21.483404 18.792969 21.65625 C 18.639439 21.80707 18.36242 22.042032 18.189453 22.501953 C 18.016221 22.962578 18.097073 23.59457 18.375 24.066406 C 18.745032 24.6946 19.964406 26.679307 21.859375 28.347656 C 23.05276 29.399678 24.164563 30.095933 25.052734 30.564453 C 25.940906 31.032973 26.664301 31.306607 26.826172 31.386719 C 27.210549 31.576953 27.630655 31.72467 28.119141 31.666016 C 28.607627 31.607366 29.02878 31.310979 29.296875 31.007812 L 29.298828 31.005859 C 29.655629 30.601347 30.715848 29.390728 31.224609 28.644531 C 31.246169 28.652131 31.239109 28.646231 31.408203 28.707031 L 31.408203 28.708984 L 31.410156 28.708984 C 31.487356 28.736474 32.454286 29.169267 33.316406 29.580078 C 34.178526 29.990889 35.053561 30.417875 35.337891 30.558594 C 35.748225 30.761674 35.942113 30.893881 35.992188 30.894531 C 35.995572 30.982516 35.998992 31.07786 35.986328 31.222656 C 35.951258 31.624292 35.8439 32.180225 35.628906 32.775391 C 35.523582 33.066746 34.975018 33.667661 34.283203 34.105469 C 33.591388 34.543277 32.749338 34.852514 32.4375 34.898438 C 31.499896 35.036591 30.386672 35.087027 29.164062 34.703125 C 28.316336 34.437036 27.259305 34.092596 25.890625 33.509766 C 23.114812 32.325956 20.755591 30.311513 19.070312 28.537109 C 18.227674 27.649908 17.552562 26.824019 17.072266 26.199219 C 16.592866 25.575584 16.383528 25.251054 16.208984 25.021484 L 16.207031 25.019531 C 15.897202 24.609805 14 21.970851 14 19.59375 C 14 17.077989 15.168497 16.091436 15.800781 15.410156 C 16.132721 15.052495 16.495617 15 16.642578 15 z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/anindya_batik/">
+                                <div
+                                    class="w-7 h-fit 2xl:w-12 outline outline-1 p-1 2xl:p-2 rounded-full"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        x="0px"
+                                        y="0px"
+                                        class=""
+                                        viewBox="0 0 50 50"
+                                    >
+                                        <path
+                                            d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="public/js/index.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

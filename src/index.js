@@ -1,11 +1,3 @@
-document.getElementById("menu-button").addEventListener("click", function () {
-  document.getElementById("mobile-menu").classList.toggle("hidden");
-});
-
-document.getElementById("close-menu").addEventListener("click", function () {
-  document.getElementById("mobile-menu").classList.add("hidden");
-});
-
 function toggleAccordion(id) {
   const content = document.getElementById(`content-${id}`);
   content.classList.toggle("active");

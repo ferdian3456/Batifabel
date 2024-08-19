@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add custom font-family to Tailwind */
 @layer base {
     body {
         font-family: "EB Garamond";
